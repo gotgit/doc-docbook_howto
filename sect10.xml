@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sect1 id="docbook-apply"><title>DocBook在实际中的应用</title>
+<para>
+本章我们通过几个实例，体会一下 DocBook 在软件开发和管理过程中的应用。但 DocBook的应用不仅限于此，更多的应用等待着我们去实践。
+</para>
+
+<sect2><title>测试用例</title>
+<para>
+测试人员一直背负着效率低下的恶名。在大多数公司中，他们是中最不受重视的一个角色，在出现软件危机时，也是最先要受到“株连”的。我的一位担任测试经理的朋友，对此是深有感触。下面是他的牢骚：
+</para>
+<itemizedlist>
+<listitem>
+<para>
+给测试留的时间不充分，又期望过高；
+</para>
+</listitem>
+<listitem>
+<para>
+屡犯错误的开发人员被调到测试部门“改造”，导致测试人员的自尊受到挫折；
+</para>
+</listitem>
+<listitem>
+<para>
+测试的计划性不强，谁也说不清一个回归测试到底测试了多少测试用例；
+</para>
+</listitem>
+<listitem>
+<para>
+测试用例完全不成体系，即使有某个可以参照，又往往是落后和过时的；
+</para>
+</listitem>
+<listitem>
+<para>
+测试部门不能有效的开发和维护测试工具，也没有对测试用例文档版本控制（Word格式的测试用例，实在是难以版本控制、难以多人维护）。
+</para>
+</listitem>
+</itemizedlist>
+<para>
+您是否也遇到了同样的问题呢？
+</para>
+<para>
+我们来帮助他寻找一下问题的症结所在吧。是什么原因导致测试的工作没有得到足够的重视呢？是因为看不到测试工作的价值。这又是为什么呢？测试工作没有秩序的，难以及时发现问题，当软件产品抱着极大的期望值上市的时候，漏洞百出，人们当然习惯性的反推，为什么没有能够测试出来？进一步会问，到底测试了哪些功能？如果这时测试部门回答不出，那么可能就要有人要承担责任了。这当然不一定是测试的错。但是测试部门能够拿出一整套测试用例文档，告诉项目经理，这些都是我们测试通过的。那么问题的焦点就回到了分析测试用例上了。是不是有发现问题的测试用例？如果有，是哪个测试人员的疏忽导致问题没有找到？如果是测试用例没有覆盖到，那么就应该借这个代价昂贵的机进一步补充和完善测试用例，确保不会再出现类似问题。
+</para>
+<para>
+如果以上的分析大致正确的话，测试用例文档的积累，是重树测试部门形象的良机。DocBook正好适合这种需要持续积累的技术文档的撰写，再配合版本控制软件，建立一套可行的测试用例撰写和维护规范应该不难。当我把DocBook介绍给我的这位担任测试经理的朋友之后，他真的用 DocBook 改进了他的工作，得到领导的赏识。这不能不说是一个奇迹。
+</para>
+<para>
+下面是改进的测试部门的工作流程：
+</para>
+<itemizedlist>
+<listitem>
+<para>
+一个回归测试周期的整个过程，都要以文档化的测试用例为基础。任何工作都体现在文档中，工作就做到了心中有数；
+</para>
+</listitem>
+<listitem>
+<para>
+测试用例要有统一的编号，一次回归测试测试就是有这一系列测试用例组成的；
+</para>
+</listitem>
+<listitem>
+<para>
+测试用例要由全体测试人员共同维护，随时随地更新，而这还需要版本控制系统的介入；
+</para>
+</listitem>
+<listitem>
+<para>
+规范的测试用例格式，内容要涵盖测试方法、输入和输出，还要包括测试中用到的模拟数据、自动化脚本等等；
+</para>
+</listitem>
+<listitem>
+<para>
+采用DocBook，撰写可以持续维护的测试用例文档，享受版本控制。
+</para>
+</listitem>
+</itemizedlist>
+
+<para>
+如<link linkend="g-9-1">图9-1</link>，是一个DocBook撰写测试用例的示例，后面是其代码。
+</para>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sample-testcase.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>测试用例</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-9-1"/>图9-1. 用DocBook编写可以持续维护的测试用例
+</para>
+</caption>
+</mediaobject>
+
+<para>
+测试用例的 DocBook 源代码
+</para>
+<programlisting>
+&lt;!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V4.2b1//EN"  [
+&lt;!ENTITY compname "&lt;ulink url='mailto:yourname@email.address'&gt;某某公司&lt;/ulink&gt;"&gt;
+]&gt;
+&lt;article&gt;
+&lt;articleinfo&gt;
+  &lt;title&gt;B2B网站测试用例汇总&lt;/title&gt;
+  &lt;author&gt;&lt;firstname&gt;测试部&lt;/firstname&gt;&lt;/author&gt;
+  &lt;revhistory&gt;
+    &lt;revision&gt;
+      &lt;revnumber&gt;1.1&lt;/revnumber&gt;
+      &lt;date&gt;2002/12/11&lt;/date&gt;
+      &lt;authorinitials&gt;David&lt;/authorinitials&gt;
+      &lt;revremark&gt;添加测试用例2&lt;/revremark&gt;
+    &lt;/revision&gt;
+    &lt;revision&gt;
+      &lt;revnumber&gt;1.0&lt;/revnumber&gt;
+      &lt;date&gt;2002/12/10&lt;/date&gt;
+      &lt;authorinitials&gt;Johnson&lt;/authorinitials&gt;
+      &lt;revremark&gt;添加测试用例1&lt;/revremark&gt;
+    &lt;/revision&gt;
+  &lt;/revhistory&gt;
+  &lt;abstract&gt;
+    &lt;para&gt;
+    本文档作为公司的测试部门的测试用例汇总，是测试部门测试工作中的参考。有任何补充和更改的需要，请用 CVS 从服务器中Checkout本文档的源代码，修改完毕后，提交 CVS 服务器。测试部门的内部网站会在每小时重新编译改动过的文档。
+    &lt;/para&gt;
+    &lt;para&gt;
+    &amp;compname;, $Revision: 1.2 $, $Date: 2003/02/05 12:54:35 $
+    &lt;/para&gt;
+  &lt;/abstract&gt;
+&lt;/articleinfo&gt;
+
+&lt;sect1&gt;&lt;title&gt;TESTB2B-0001&lt;/title&gt;
+&lt;informaltable  frame='all'&gt;	<co id="co.sample.testcase.informaltbl"/>
+&lt;tgroup cols='8' align='left' colsep='1' rowsep='1'&gt;
+  &lt;colspec colname='c1'/&gt;
+  &lt;colspec colname='c2'/&gt;
+  &lt;colspec colname='c3'/&gt;
+  &lt;colspec colname='c4'/&gt;
+  &lt;colspec colname='c5'/&gt;
+  &lt;colspec colname='c6'/&gt;
+  &lt;colspec colname='c7'/&gt;
+  &lt;colspec colname='c8'/&gt;
+&lt;tbody&gt;
+  &lt;row&gt;
+    &lt;entry&gt;项目编号&lt;/entry&gt;
+    &lt;entry&gt;B2B&lt;/entry&gt;
+    &lt;entry&gt;项目名称&lt;/entry&gt;
+    &lt;entry&gt;电子商务网站测试&lt;/entry&gt;
+    &lt;entry&gt;测试日期&lt;/entry&gt;
+    &lt;entry&gt;&lt;/entry&gt;			<co id="co.sample.testcase.blank"/>
+    &lt;entry&gt;测试人员&lt;/entry&gt;		
+    &lt;entry&gt;&lt;/entry&gt;
+  &lt;/row&gt;
+  &lt;row&gt;
+    &lt;entry&gt;测试用例编号&lt;/entry&gt;
+    &lt;entry&gt;TESTB2B-0001&lt;/entry&gt;
+    &lt;entry&gt;测试用例名称&lt;/entry&gt;
+    &lt;entry&gt;用户登录测试&lt;/entry&gt;
+    &lt;entry&gt;作者&lt;/entry&gt;
+    &lt;entry&gt;Johnson&lt;/entry&gt;
+  &lt;/row&gt;
+  &lt;row&gt;
+    &lt;entry&gt;测试用例描述(方法和目的)&lt;/entry&gt;
+    &lt;entry namest="c2" nameend="c8"&gt;
+      &lt;para&gt;测试登录界面对不同浏览器的兼容性；&lt;/para&gt;
+      &lt;para&gt;测试异常输入对CGI的影响；&lt;/para&gt;
+    &lt;/entry&gt;
+  &lt;/row&gt;
+  &lt;row&gt;
+    &lt;entry&gt;测试环境设置&lt;/entry&gt;
+    &lt;entry namest="c2" nameend="c8"&gt;
+      &lt;para&gt;测试平台：Windows 98 + IE4.0；Windows 98 + IE5.0；Windows 98 + IE6.0；Windows 2000 + IE5.0；Linux + Mozilla&lt;/para&gt;
+    &lt;/entry&gt;
+  &lt;/row&gt;
+&lt;/tbody&gt;
+&lt;/tgroup&gt;
+&lt;/informaltable &gt;
+
+&lt;table  frame='topbot'&gt;&lt;title&gt;测试步骤&lt;/title&gt;
+&lt;tgroup cols='4' align='left' colsep='1' rowsep='1'&gt;
+  &lt;colspec colwidth='1*'/&gt;
+  &lt;colspec colwidth='20*'/&gt;
+  &lt;colspec colwidth='10*'/&gt;
+  &lt;colspec colwidth='5*'/&gt;
+&lt;thead&gt;
+  &lt;row&gt;
+    &lt;entry&gt;序号&lt;/entry&gt;&lt;entry&gt;操作&lt;/entry&gt;&lt;entry&gt;预期结果&lt;/entry&gt;&lt;entry&gt;实际结果&lt;/entry&gt;
+  &lt;/row&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;row&gt;
+    &lt;entry&gt;1&lt;/entry&gt;
+    &lt;entry&gt;
+      &lt;para&gt;Windows 98 + IE4.0登录开发服务器:"http://10.0.0.99/servlet/login"；&lt;/para&gt;
+      &lt;para&gt;输入用户名密码:test/test555&lt;/para&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+      &lt;para&gt;登录成功，进入用户自定义界面。&lt;/para&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+    &lt;/entry&gt;
+  &lt;/row&gt;
+  &lt;row&gt;
+    &lt;entry&gt;2&lt;/entry&gt;
+    &lt;entry&gt;
+      &lt;para&gt;Windows 98 + IE5.0登录开发服务器:"http://10.0.0.99/servlet/login"；&lt;/para&gt;
+      &lt;para&gt;输入用户名密码:test/test555&lt;/para&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+      &lt;para&gt;登录成功，进入用户自定义界面。&lt;/para&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+    &lt;/entry&gt;
+  &lt;/row&gt;
+  &lt;row&gt;
+    &lt;entry&gt;...&lt;/entry&gt;
+    &lt;entry&gt;
+      &lt;para&gt;...&lt;/para&gt;
+      &lt;para&gt;...&lt;/para&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+      &lt;para&gt;...&lt;/para&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+    &lt;/entry&gt;
+  &lt;/row&gt;
+&lt;/table&gt;
+
+&lt;note&gt;
+  &lt;para&gt;
+  其他注意事项：
+  &lt;/para&gt;
+&lt;/note&gt;
+&lt;/sect1&gt;
+
+
+&lt;sect1&gt;&lt;title&gt;TESTB2B-0002&lt;/title&gt;	<co id="co.sample.testcase.next"/>
+&lt;para&gt;
+...
+&lt;/para&gt;
+&lt;/sect1&gt;
+
+&lt;/article&gt;
+
+</programlisting>
+
+<calloutlist>
+<callout arearefs="co.sample.testcase.informaltbl">
+<para>
+不带标题行的表格。
+</para>
+</callout>
+<callout arearefs="co.sample.testcase.blank">
+<para>
+作为模板，此项留空，在实际测试过程中，该表格打印，手工填写存档。
+</para>
+</callout>
+<callout arearefs="co.sample.testcase.next">
+<para>
+以追加方式增加新的测试用例。
+</para>
+</callout>
+</calloutlist>
+
+</sect2>
+
+<sect2><title>项目日志</title>
+<para>
+目前介绍软件工程和项目管理的书是越来越多了。遍历各家之说，体会最深的是两个字：“沟通”。没有沟通，开发人员单枪匹马，重复着“前辈们”走过的路，缓慢的成长着。没有沟通，测试和开发团队就在没完没了的争吵中迎接项目的延期。没有沟通，部门之间的鸿沟足可以吓退客户。没有沟通，公司的决策人还在期盼着项目的成功的那一天，而不知道危险已经临近。沟通是这么样的重要，而项目经理就是这些沟通途径的交汇点。
+</para>
+<para>
+每个公司都会对项目经理有着这样或者那样的沟通上的要求，比如常见的周计划、月计划。它们是是项目经理分解任务以及向直接上级汇报工作的重要工具。自从南开大学毕业以来的几年间，我做得最多的职位就是项目经理，已经不记得写了多少计划。很长一段时间，一旦写完计划，发出邮件便了事，计划也就在本地磁盘中不知去向。后来，在做项目总结时，有些里程碑事件实在是想不起来，只是依稀记得在某个项目计划中曾经提到过。于是，从邮件的故纸堆中查找，经常是费了半天劲一无所获。从此就有了把项目总结和项目日志积累起来的习惯。最开始的文档管理手段是比较落后的，直接放到文件服务器中，对于项目日志，就是每天在 Word 文档后面追加，直到有一天，一个不留神把项目日志整个覆盖掉了，那是可真是后悔不迭。有什么技术，可以对文档像对代码一样的版本控制呢？我发现了 DocBook，从此便用 DocBook 开始我的新的项目日志。
+</para>
+<para>
+项目日志的文件格式是以一周为一个章节，每章节分为两个部分，日志部分是每天的“流水账”（记录比较重要的事件），周计划部分，是上周的项目总结和下一个星期的工作计划。如<link linkend="g-9-2">图9-2</link>。用 DocBook 维护你的项目日志，让你的领导对你刮目相看。
+</para>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sample-diary.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>项目日志</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-9-2"/>图9-2. 用DocBook编写项目日志
+</para>
+</caption>
+</mediaobject>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sample-weekly.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>项目周计划</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-9-3"/>图9-3. 用DocBook编写项目周计划
+</para>
+</caption>
+</mediaobject>
+
+<para>
+以下是DocBook 源代码：
+</para>
+<programlisting>
+&lt;!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V4.2b1//EN"  [
+&lt;!ENTITY yourname "&lt;ulink url='mailto:yourname@email.address'&gt;Your Name&lt;/ulink&gt;"&gt;
+]&gt;
+&lt;article&gt;
+&lt;articleinfo&gt;
+  &lt;title&gt;项目日志&lt;/title&gt;
+  &lt;author&gt;&lt;firstname&gt;作者姓名&lt;/firstname&gt;&lt;/author&gt;
+  &lt;abstract&gt;
+    &lt;para&gt;
+    项目日志和项目计划，为项目组同志提供参考。
+    &lt;/para&gt;
+    &lt;para&gt;
+    &amp;yourname;, $Revision: 1.2 $, $Date: 2003/02/05 12:54:35 $
+    &lt;/para&gt;
+  &lt;/abstract&gt;
+&lt;/articleinfo&gt;
+
+&lt;sect1 id="w021028"&gt;&lt;title&gt;1028--1101&lt;/title&gt; <co id="co.diary.w021028"/>
+
+&lt;sect2 id="daily021028"&gt;&lt;title&gt;日志&lt;/title&gt;
+&lt;itemizedlist&gt;
+  &lt;listitem&gt;	<co id="co.diary.1030"/>
+    &lt;para&gt;
+    2002/10/30, 3
+    &lt;/para&gt;
+    &lt;orderedlist&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        完成任务：******
+        &lt;/para&gt;
+        &lt;para&gt;
+        David
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        完成任务：******
+        &lt;/para&gt;
+        &lt;para&gt;
+        Johnson
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/orderedlist&gt;
+  &lt;/listitem&gt;
+  
+  &lt;listitem&gt;
+    &lt;para&gt;
+    2002/10/29, 2
+    &lt;/para&gt;
+    &lt;orderedlist&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        Seminar: ******
+        &lt;/para&gt;
+        &lt;para&gt;
+        yzw
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/orderedlist&gt;
+  &lt;/listitem&gt;
+  
+  &lt;listitem&gt;
+    &lt;para&gt;
+    2002/10/28, 1
+    &lt;/para&gt;
+    &lt;orderedlist&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        讨论需求：******
+        &lt;/para&gt;
+        &lt;para&gt;
+        Mahui
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/orderedlist&gt;
+  &lt;/listitem&gt;
+&lt;/itemizedlist&gt;
+&lt;/sect2&gt;
+
+&lt;sect2 id="weekly021028"&gt;&lt;title&gt;周报&lt;/title&gt; <co id="co.diary.weekly021028"/>
+
+&lt;segmentedlist&gt;
+  &lt;segtitle&gt;填表日期&lt;/segtitle&gt;&lt;segtitle&gt;填表人&lt;/segtitle&gt;&lt;segtitle&gt;时 间&lt;/segtitle&gt;&lt;segtitle&gt;主要工作&lt;/segtitle&gt;
+  &lt;seglistitem&gt;
+    &lt;seg&gt;2002/10/28&lt;/seg&gt;
+    &lt;seg&gt;Johnson&lt;/seg&gt;
+    &lt;seg&gt;2002/10/28－2002/11/01&lt;/seg&gt;
+    &lt;seg&gt;******&lt;/seg&gt;
+  &lt;/seglistitem&gt;
+&lt;/segmentedlist&gt;
+
+&lt;orderedlist&gt;
+  &lt;listitem&gt;                              <co id="co.diary.weekplan"/>
+    &lt;table frame='all'&gt;&lt;title&gt;本周工作计划表&lt;/title&gt;
+    &lt;tgroup cols='2' align='left' colsep='1' rowsep='1'&gt;
+    &lt;colspec colname='c1' colwidth="300pt" &gt;
+    &lt;colspec colname='c2' colwidth="80pt" &gt;
+    &lt;thead&gt;
+    &lt;row&gt;
+    &lt;entry&gt;本周工作任务&lt;/entry&gt;
+    &lt;entry&gt;相关人员&lt;/entry&gt;
+    &lt;/row&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    
+    &lt;row&gt;
+    &lt;entry&gt;
+    &lt;para&gt;
+    工作任务1...
+    &lt;/para&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+    人员1
+    &lt;/entry&gt;
+    &lt;/row&gt;
+    
+    &lt;row&gt;
+    &lt;entry&gt;
+    &lt;para&gt;
+    工作任务1...
+    &lt;/para&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+    人员2
+    &lt;/entry&gt;
+    &lt;/row&gt;
+    
+    &lt;row&gt;
+    &lt;entry&gt;
+    工作任务3...
+    &lt;/entry&gt;
+    &lt;entry&gt;
+    人员3
+    &lt;/entry&gt;
+    &lt;/row&gt;
+    
+    &lt;/tbody&gt;
+    &lt;/tgroup&gt;
+    &lt;/table&gt;
+    &lt;note&gt;
+    &lt;title&gt;备注&lt;/title&gt;
+    &lt;para&gt;
+    &lt;/para&gt;
+    &lt;/note&gt;
+  &lt;/listitem&gt;
+  
+  &lt;listitem&gt;               <co id="co.diary.weeksummery"/>
+    &lt;table frame='all'&gt;&lt;title&gt;上周项目进展&lt;/title&gt;
+    &lt;tgroup cols='2' align='left' colsep='1' rowsep='1'&gt;
+    &lt;colspec colname='c1' colwidth="300pt" &gt;
+    &lt;colspec colname='c2' colwidth="80pt" &gt;
+    &lt;thead&gt;
+    &lt;row&gt;
+    &lt;entry&gt;任务名称&lt;/entry&gt;
+    &lt;entry&gt;负责人&lt;/entry&gt;
+    &lt;/row&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    
+    &lt;row&gt;
+    &lt;entry&gt;
+    完成上周任务1...
+    &lt;/entry&gt;
+    &lt;entry&gt;
+    人员1
+    &lt;/entry&gt;
+    &lt;/row&gt;
+    
+    &lt;row&gt;
+    &lt;entry&gt;
+    完成上周任务2...
+    &lt;/entry&gt;
+    &lt;entry&gt;
+    人员2
+    &lt;/entry&gt;
+    &lt;/row&gt;
+    
+    &lt;row&gt;
+    &lt;entry&gt;
+    完成上周任务3...
+    &lt;/entry&gt;
+    &lt;entry&gt;
+    人员3
+    &lt;/entry&gt;
+    &lt;/row&gt;
+    
+    &lt;/tbody&gt;
+    &lt;/tgroup&gt;
+    &lt;/table&gt;
+    &lt;note&gt;
+    &lt;title&gt;备注&lt;/title&gt;
+    &lt;para&gt;
+    &lt;/para&gt;
+    &lt;/note&gt;
+  &lt;/listitem&gt;
+&lt;/orderedlist&gt;
+
+&lt;/sect2&gt;
+&lt;/sect1&gt;
+
+&lt;sect1 id="w021021"&gt;&lt;title&gt;1021--1025&lt;/title&gt;  <co id="co.diary.weeklast"/>
+&lt;sect2 id="daily021021"&gt;&lt;title&gt;日志&lt;/title&gt;
+&lt;para&gt;
+...
+&lt;para&gt;
+&lt;/sect2&gt;
+&lt;sect2 id="weekly021021"&gt;&lt;title&gt;周报&lt;/title&gt;
+&lt;para&gt;
+...
+&lt;para&gt;
+&lt;/sect2&gt;
+&lt;/sect1&gt;
+
+&lt;/article&gt;
+</programlisting>
+
+<calloutlist>
+<callout arearefs="co.diary.w021028">
+<para>
+10月28日到11月1日的一个星期的日志和周计划。每周开始一个新的章节。
+</para>
+</callout>
+<callout arearefs="co.diary.1030">
+<para>
+10月30日（星期三）的项目日志。最新的日期总是在最前。每天的项目日志只需要重复拷贝一下前一天日志的结构即可。
+</para>
+</callout>
+<callout arearefs="co.diary.weekly021028">
+<para>
+周计划开始，包括本周计划和上周项目进展。
+</para>
+</callout>
+<callout arearefs="co.diary.weekplan">
+<para>
+本周工作计划。
+</para>
+</callout>
+<callout arearefs="co.diary.weeksummery">
+<para>
+上周项目进展。
+</para>
+</callout>
+<callout arearefs="co.diary.weeksummery">
+<para>
+上周项目进展。
+</para>
+</callout>
+<callout arearefs="co.diary.weeklast">
+<para>
+上一个星期的项目日志和工作计划。
+</para>
+</callout>
+</calloutlist>
+
+</sect2>
+
+<sect2><title>版本变更说明</title>
+<para>
+版本变更说明，又叫做"Release Notes"，"Changes"，经常伴随着软件产品一道发布，提供给最终用户。该文档也可以在开发小组内部的参考。该文档的维护，意味着开发工作在继续，否则意味着项目的终结。该文档的维护也反映了软件开发中配置管理的水平以及软件开发对市场、对BUG的响应能力。
+</para>
+<para>
+同时，该文档的维护非常频繁，而且用户需要的格式也是五花八门，如常见的网页格式，纯文本格式，PDF格式等。如何尽量保证该文档的更新和产品版本提升保持同步，是困扰很多项目组的一个难题。使用 DocBook 不难作出国际水准的版本变更说明。
+</para>
+<para>
+<link linkend="g-9-4">图9-4</link> 就是一个版本变更说明的范例。
+</para>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sample-changes.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>版本变更说明</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-9-4"/>图9-4. 版本变更说明
+</para>
+</caption>
+</mediaobject>
+
+<para>
+以下是DocBook 源代码：
+</para>
+<programlisting>
+
+&lt;!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V4.2b1//EN"  [
+&lt;!ENTITY yourname "&lt;ulink url='mailto:yourname@email.address'&gt;Your Name&lt;/ulink&gt;"&gt;
+]&gt;
+&lt;article&gt;
+&lt;articleinfo&gt;
+  &lt;title&gt;Linktrust Cyberwall 2.4版本变更说明书&lt;/title&gt;
+  &lt;author&gt;&lt;firstname&gt;作者姓名&lt;/firstname&gt;&lt;/author&gt;
+  &lt;revhistory&gt;
+    &lt;revision&gt;
+      &lt;revnumber&gt;1.4&lt;/revnumber&gt;
+      &lt;date&gt;2002/11/29&lt;/date&gt;
+      &lt;authorinitials&gt;caijm&lt;/authorinitials&gt;
+      &lt;revremark&gt;
+      补充 2.4.0040版本更改记录；
+      &lt;/revremark&gt;
+    &lt;/revision&gt;
+  &lt;/revhistory&gt;
+  &lt;abstract&gt;
+    &lt;para&gt;
+    记录当前版本号（build number）下，添加的新功能和修改的BUG。
+    &lt;/para&gt;
+    &lt;para&gt;
+    &amp;yourname;, $Revision: 1.2 $, $Date: 2003/02/05 12:54:35 $
+    &lt;/para&gt;
+  &lt;/abstract&gt;
+&lt;/articleinfo&gt;
+
+
+&lt;sect1&gt;&lt;title&gt;Build 2.4.0040 Major changes&lt;/title&gt;
+  &lt;sect2&gt;&lt;title&gt;版本信息&lt;/title&gt;
+  &lt;segmentedlist&gt;&lt;title&gt;版本信息&lt;/title&gt;
+    &lt;segtitle&gt;版本号&lt;/segtitle&gt;
+    &lt;segtitle&gt;编译日期&lt;/segtitle&gt;
+    &lt;segtitle&gt;Cyberwall Label&lt;/segtitle&gt;
+    &lt;segtitle&gt;LTOS Tag&lt;/segtitle&gt;
+    &lt;segtitle&gt;描述&lt;/segtitle&gt;
+    &lt;seglistitem&gt;
+      &lt;seg&gt;2.4.0040&lt;/seg&gt;
+      &lt;seg&gt;20021128&lt;/seg&gt;
+      &lt;seg&gt;2.4.0040-last&lt;/seg&gt;
+      &lt;seg&gt;LTOS24B_021128_DONTPANIC&lt;/seg&gt;
+      &lt;seg&gt;collect crash data&lt;/seg&gt;
+    &lt;/seglistitem&gt;
+  &lt;/segmentedlist&gt;
+  &lt;/sect2&gt;
+
+  &lt;sect2&gt;&lt;title&gt;New features or changes since Build 2.4.0039&lt;/title&gt;
+    &lt;itemizedlist&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        panic后把信息写到磁盘；[xucm]
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        加入了对Intel 82543/82544/82545 系列千兆卡的支持；[xucm]
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        change lt software dog timeout from 10 seconds to 8 seconds；[song]
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        修改tcp状态机算法；[song]
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        WEB界面ha增加心跳线设置；[wuzj]
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/itemizedlist&gt;
+  &lt;/sect2&gt;
+
+  &lt;sect2&gt;&lt;title&gt;Bugs fixed since Build 2.4.0039&lt;/title&gt;
+    &lt;itemizedlist&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        fix vrrp interface number checking problem; [qianxb]
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+        改正WEB界面“应用”后ie浏览器上方的显示调用情况的黑色地球标志一直转动的问题；[mahui]
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/itemizedlist&gt;
+  &lt;/sect2&gt;
+&lt;/sect1&gt;
+&lt;/article&gt;
+</programlisting>
+</sect2>
+
+</sect1>

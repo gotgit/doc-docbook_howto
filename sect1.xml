@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"   
+	"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+<!ENTITY myweb "<ulink url='http://www.worldhello.net'>http://www.worldhello.net</ulink>">
+]-->
+<sect1 id="firstexp"><title>DocBook 初体验</title>
+<para>
+如果你是一个软件开发人员，是否对撰写文档深恶痛绝？为应付工作而写的文档，往往不加维护，且难以维护，远远不能反映软件设计的实际情况，成为文件服务器中的垃圾。
+</para>
+<para>
+如果你是一个文档工程师，经常要面对一个文档有多种输出格式，如 Word文档，PDF格式，HTML格式的文档。如果你要长期维护每一种格式的文档，又能保障它们的一致性，那么你真是太伟大了。
+</para>
+<para>
+软件开发引入版本控制，使得多人协作成为可能，也使得软件开发走向规模化，摆脱手工作坊的开发模式。但是文档的撰写和维护，你做到了版本控制和多人协作了么？
+</para>
+<para>
+DocBook正是针对上述顽症的一剂解药。DocBook 作为风行于开放源码世界的一种文档撰写格式，已经成为很多组织和公司撰写技术文档的事实上的规范。DocBook 提供了一种基于SGML/XML的、面向语义、面向结构、纯文本格式、可版本控制的文档撰写模式，它打破了传统的、面向表现的、所见即所得的、基于私有格式的文档撰写模式。基于SGML/XML的面向结构的文档，使得 DocBook 格式的文档，成为一种真正的万能格式的文档，几乎可以转换为任何一种文档格式。而属于纯文本范畴的 DocBook 文档，更可以利用版本控制软件，实现多人协作维护。
+</para>
+<para>
+然而，国内了解 DocBook 的人还不多。当然，这也是由于国内参与国际性的开放源码开发的人太少有关，更多的人还是喜欢闭门造车。技术文档的撰写，也还是停留在商务文档的写作模式之上，注重形式，忽视文档的可维护性。大家在享受 Word 的所见即所得的方便的表象的背后，是文档更新的困难——难以多人协同维护，文档互相覆盖，乱糟糟一团。到头来，文件服务器中是文档堆成山，但大都由于过时而严重的贬值了。
+</para>
+<para>
+任何工作都要有文档记录，这不应该成为一句口号，想要建成百年老店的中国软件企业，要重视知识的积累。利用本书所介绍的 DocBook，撰写可维护文档，让任何工作都有文档记录不再是梦想。DocBook 更是个人知识积累的工具，愈早使用 DocBook，愈早获得知识持续积累的快乐，享受完成传世之作的成就感。
+</para>
+
+<sect2><title>是否似曾相识</title>
+<para>
+DocBook 是个什么样的东西呢？我敢打赌，大部分人都早已领略过了 DocBook 的风采。
+</para>
+<para>
+搞IT的，没有听说过 Linux 的，一定是凤毛麟角。而且，大多数人也一定从Linux的丰富的Howto文档获益匪浅。可是，知道么，大部分 Howto 文档就是用 DocBook 格式完成的。
+</para>
+<para>
+HOWTO文档中描述的细节可能会逐渐淡忘，但相信大多数人一定会对其一致的文档风格还有清晰的印象，为一个HOWTO文档能有那么多的输出格式（单独的HTML文档，每章一页的HTML文档，PDF格式，WORD文档，...）而惊叹。
+</para>
+<para>
+而最让人惊叹的要数这些文档的写作方式：分布在世界各地的作者们，使用CVS作为版本控制软件，以DocBook作为文档的格式，协作完成一个又一个的传世之作。
+</para>
+<itemizedlist>
+<listitem>
+<para>
+转换为超文本格式的DocBook文档，一般都很相似（如<link linkend="g-1-1">图1-1</link>）。文档的头部都包含了修订历史、摘要、目录等几个部分。而且为了方便文档的维护，往往还加入了版本控制系统识别的关键字。例如：$Revision: 1.4 $ 和 $Date: 2003/02/05 12:54:35 $，就是两个常用的CVS关键字扩展。
+</para>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sect1-1.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>本文的版本信息和目录</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-1-1"/>图1-1. DocBook文档具有格式相近的修订历史和目录
+</para>
+</caption>
+</mediaobject>
+</listitem>
+
+<listitem>
+<para>
+转换为分页显示的DocBook文档，在页面首部和尾部，一般都包含到前后页面和首页的跳转。如：<link linkend="g-1-2">图1-2</link>。
+</para>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sect1-2.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>每个页面首尾的章节跳转</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-1-2"/>图1-2. DocBook每个分页都有到前后章节和首页的跳转
+</para>
+</caption>
+</mediaobject>
+</listitem>
+
+<listitem>
+<para>
+DocBook撰写的文档可以方便的转换为各种格式，如：<link linkend="g-1-3">图1-3</link>。常见的转换格式有：单一超文本网页（HTML），带分页的超文本格式（HTMLs），纯文本（TEXT），Word兼容格式（RTF），Acrobat Reader（RTF），微软帮助文件（CHM）。
+</para>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sect1-3.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>多种格式下载</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-1-3"/>图1-3. DocBook文档可以转换为多种格式，提供下载
+</para>
+</caption>
+</mediaobject>
+</listitem>
+
+</itemizedlist>
+</sect2>
+
+<sect2><title>文档是这样完成的</title>
+<para>
+初识了 DocBook，你是否动心了？不过，别急。在深入介绍DocBook之前，先介绍一个实际操作的例子。本例是作者在撰写本书过程中的一个真实的小片断。
+</para>
+<itemizedlist>
+<listitem>
+<para>
+更新源代码
+</para>
+<para>
+源代码？难道要编程么？请不要误会，更不要害怕。用DocBook技术写成的文档，是纯文本格式，可以使用配置管理软件进行版本控制。而把这类文件称作源代码，并不过分。在准备撰写文档之前，先和版本控制系统进行同步，防止多人协同工作时可能造成的版本冲突。如<link linkend="g-1-4">图1-4</link>。
+</para>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sect2-1.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>WinCVS：更新源代码</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-1-4"/>图1-4. 使用 WinCVS 更新源代码
+</para>
+</caption>
+</mediaobject>
+</listitem>
+<listitem>
+<para>
+文件编辑
+</para>
+<para>
+如<link linkend="g-1-5">图1-5</link>，使用用 UltraEdit 编辑该文件。UltraEdit? 难道没有像Word那样的所见即所得的工具么？我的回答是，学用DocBook，这的确是最难过的一关，要改变写作方式，把精力放在文章的撰写和结构的设计上，而不在字体、格式上修修补补。从多人的协作工作和个人的知识积累的便利上，这一切非常值得。
+</para>
+<para>
+也不要为文档中出现的标签（尖括号括起来的关键字形成了标签）感到困惑，我们将在本书的稍后作以介绍。
+</para>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sect2-2.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>UltraEdit编辑和DocBook关键字补齐</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-1-5"/>图1-5. UltraEdit编辑和DocBook关键字补齐功能
+</para>
+</caption>
+</mediaobject>
+</listitem>
+<listitem>
+<para>
+提交前比较源代码
+</para>
+<para>
+将修改后的文档提交到配置管理系统。提交前，先比较一下（如<link linkend="g-1-6">图1-6</link>），这也是程序开发人员的一种“惯性”吧。而WinCVS调用的外部Differ程序：Araxis Merge（如<link linkend="g-1-7">图1-7</link>），是我用过得最好用的Differ工具之一。
+</para>
+<para>
+当然也可以和该文件的任何一个版本进行比较。当一个文档由版本控制系统维护之后，再也不必担心你的文档会被覆盖、会丢掉什么，版本控制系统，忠实记录了文档的每一次Checkin。
+</para>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sect2-4.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>文件改变了，需要 Checkin</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-1-6"/>图1-6. 文件提交前，先Differ一下
+</para>
+</caption>
+</mediaobject>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sect2-5.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>Araxis Merge是我见过的最好的Differ工具</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-1-7"/>图1-7. Araxis Merge是我见过的最好的Differ工具
+</para>
+</caption>
+</mediaobject>
+</listitem>
+<listitem>
+<para>
+提交源代码
+</para>
+<para>
+既然添加的内容没有问题，就提交吧。如<link linkend="g-1-8">图1-8</link>
+</para>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/sect2-3.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>将改动提交到CVS服务器</phrase>
+</textobject>
+<caption>
+<para>
+<anchor id="g-1-8"/>图1-8. 将改动提交到CVS服务器
+</para>
+</caption>
+</mediaobject>
+</listitem>
+<listitem>
+<para>
+编译
+</para>
+<para>
+编译？又是一个软件开发的专业词汇。DocBook源文件并不能直接用来浏览和打印，需要将结构化文档转换为其他格式。下面是一段转换实例：将DocBook格式转换为超文本和纯文本格式。加黑的部分为输入的命令，其他部分为屏幕输出。
+</para>
+<screen>
+Administrator@JOHNSON ~/work/johnson_homepage
+$ <command>sh make docbook_howto</command>
+/cygdrive/d/HOME/WORK/johnson_homepage/docbook/docbook_howto/index.sgml is newer
+
+make -html docbook_howto
+openjade -E 0 -t sgml -i html -V nochunks -d /share/sgml/docbook-dsssl/ldp.dsl\#
+html /cygdrive/d/HOME/WORK/johnson_homepage/docbook/docbook_howto/index.sgml &gt;  
+docbook_howto.htm
+
+done
+
+/cygdrive/d/HOME/WORK/johnson_homepage/docbook/docbook_howto/index.sgml is newer
+
+make -htmls docbook_howto
+openjade -E 0 -t sgml -i html -d /share/sgml/docbook-dsssl/ldp.dsl\#html /cygdri
+ve/d/HOME/WORK/johnson_homepage/docbook/docbook_howto/index.sgml
+
+done
+
+lynx -dump -base -dont_wrap_pre -nolist -display_charset=gb2312 -assume_charset=
+gb2312 -assume_local_charset=gb2312 -assume_unrec_charset=gb2312 /cygdrive/d/HOM
+E/WORK/johnson_homepage/doc/docbook_howto/docbook_howto.htm &gt; /cygdrive/d/HOME/W
+ORK/johnson_homepage/doc/docbook_howto/docbook_howto.txt
+
+done
+</screen>
+</listitem>
+</itemizedlist>
+</sect2>
+
+</sect1>

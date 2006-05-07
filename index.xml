@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"   
+	"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+<!ENTITY author "<ulink url='mailto:johnson@worldhello.net'>Johnson</ulink>">
+<!ENTITY orgname "<ulink url='http://www.worldhello.net'>worldhello.net</ulink>">
+<!ENTITY myweb "<ulink url='http://www.worldhello.net'>http://www.worldhello.net</ulink>">
+<!ENTITY sect1  SYSTEM "sect1.xml">
+<!ENTITY sect2  SYSTEM "sect2.xml">
+<!ENTITY sect3  SYSTEM "sect3.xml">
+<!ENTITY sect4  SYSTEM "sect4.xml">
+<!ENTITY sect5  SYSTEM "sect5.xml">
+<!ENTITY sect6  SYSTEM "sect6.xml">
+<!ENTITY sect7  SYSTEM "sect7.xml">
+<!ENTITY sect8  SYSTEM "sect8.xml">
+<!ENTITY sect9  SYSTEM "sect9.xml">
+<!ENTITY sect10 SYSTEM "sect10.xml">
+<!ENTITY appendix SYSTEM "appendix.xml">
+<!ENTITY % vers   SYSTEM "version.xml">
+%vers;
+]>
+<article id="index">
+<articleinfo>
+<title>DocBook 助你完成传世之作</title>
+<subtitle>文档的技术革命</subtitle>
+<author><firstname>鑫</firstname><surname>蒋</surname></author>
+<affiliation>
+<orgname>&orgname;</orgname>
+<address><email>johnson@worldhello.net</email></address>
+</affiliation>
+<revhistory>
+<!--revision>
+<revnumber>$Revision: 1.34 $</revnumber>
+<date>$Date: 2003/02/05 12:54:35 $</date>
+<authorinitials>$Author: jiangxin $</authorinitials>
+<revremark>...</revremark>
+</revision-->
+<revision>
+<revnumber>2.3</revnumber>
+<date>2003/1/14</date>
+<authorinitials>jiangxin</authorinitials>
+<revremark>将Hello World部分内容作为样章，网络发布</revremark>
+</revision>
+<revision>
+<revnumber>2.2</revnumber>
+<date>2002/12/11</date>
+<authorinitials>jiangxin</authorinitials>
+<revremark>重新规划文档结构，补充 DocBook 在实际中的应用</revremark>
+</revision>
+<revision>
+<revnumber>2.1</revnumber>
+<date>2002/12/9</date>
+<authorinitials>jiangxin</authorinitials>
+<revremark>和国内某出版社联系，拟定写作计划。</revremark>
+</revision>
+<revision>
+<revnumber>2.0</revnumber>
+<date>2002/09/29</date>
+<authorinitials>jiangxin</authorinitials>
+<revremark>补充Openjade的安装及使用</revremark>
+</revision>
+<revision>
+<revnumber>1.2</revnumber>
+<date>2002/01/11</date>
+<authorinitials>jiangxin</authorinitials>
+<revremark>从编程规范中独立出来</revremark>
+</revision>
+</revhistory>
+<abstract>
+<para>
+DocBook 是当前风行于开放源码世界的一种文档撰写格式，已经成为计算机文档撰写的事实上的规范。 
+DocBook 是基于SGML/XML的、面向结构的文档撰写模式。它打破了传统的、面向表现的、所见即所得文档撰写模式。
+愈早使用 DocBook，愈早获得知识持续积累的快乐，享受完成传世之作的成就感。
+</para>
+<para>
+（编译自版本: &doc.revision;，最后更新时间: &doc.lastchange;）
+</para>
+</abstract>
+</articleinfo>
+
+<!-- DocBook 初体验 -->
+&sect1;
+
+<!-- DocBook 基础: why DocBook, DocBook History -->
+&sect2;
+
+<!-- DocBook 基础: Hello World —— DocBook 起步 -->
+&sect3;
+
+<!-- SGML/XML入门 -->
+&sect4;
+
+<!-- 深入 DocBook 文档 -->
+&sect5;
+
+<!-- 建立个性还的编译环境 -->
+&sect6;
+
+<!-- 发布 DocBook 文档 -->
+&sect7;
+
+<!-- 用 XML 来写 DocBook -->
+&sect8;
+
+<!-- 定制DocBook -->
+&sect9;
+
+<!-- DocBook在实际中的应用 -->
+&sect10;
+
+<!-- 参考 -->
+&appendix;
+
+</article>

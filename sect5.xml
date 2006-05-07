@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"   
+	"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+<!ENTITY myweb "<ulink url='http://www.worldhello.net'>http://www.worldhello.net</ulink>">
+]-->
+<sect1><title>深入 DocBook 文档</title>
+<sect2><title>SGML 格式的DocBook文档</title>
+<para>
+文档的要素：
+An SGML Declaration, A Document Type Declaration, An Internal Subset, and The Document (or Root) Element
+</para>
+<orderedlist>
+<listitem>
+<para>
+An SGML Declaration
+</para>
+<para>
+可选。但是 DocBook 有预定义设置，无需改变。主要内容有：&lt;和&gt;作为标记的分隔符，标记名称的
+可用字符，长度等。
+</para>
+</listitem>
+
+<listitem>
+<para>
+A Document Type Declaration
+</para>
+<para>
+一个DocBook文档，必须以 Document Type Declaration 开始，指明该文档的根元素是什么。如：
+</para>
+<screen>
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+</screen>
+<note>
+<para>
+An Internal Subset
+</para>
+<para>
+在一个Document Type Declaration 中，可以包含一个或者多个 Internal Subset，如：
+</para>
+<screen>
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY nwalsh "Norman Walsh"&gt;
+&lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
+&lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
+]&gt;
+</screen>
+</note>
+</listitem>
+
+<listitem>
+<para>
+The Document (or Root) Element
+</para>
+<para>
+如下面的 &lt;boot&gt; 和 &lt;/boot&gt; 即是该文档的唯一根元素。
+</para>
+<screen>
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY nwalsh "Norman Walsh"&gt;
+&lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
+&lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
+]&gt;
+&lt;book&gt;
+&amp;chap1;
+&amp;chap2;
+&lt;/book&gt;
+</screen>
+</listitem>
+
+</orderedlist>
+</sect2>
+
+<sect2><title>XML 格式的DocBook文档</title>
+<note>
+<para>
+其实XML和SGML并无太大区别，只要在写SGML格式的DocBook时遵从：
+</para>
+<orderedlist>
+<listitem>
+<para>
+If you are interested in future XML compatibility, input all element and attribute names strictly in lowercase. 
+</para>
+</listitem>
+<listitem>
+<para>
+If you are interested in future XML compatibility, always quote all attribute values. 
+</para>
+</listitem>
+</orderedlist>
+</note>
+
+<para>
+用 XML 撰写DocBook文档
+</para>
+<orderedlist>
+<listitem>
+<para>
+An XML Declaration
+</para>
+<para>
+不像 SGML的Declaration 可有可无，XML 文档必须以 An XML Declaration开始。
+</para>
+<screen>
+&lt;?xml version="1.0" standalone="no"?&gt;
+</screen>
+</listitem>
+
+<listitem>
+<para>
+A Document Type Declaration
+</para>
+<para>
+DocBook XML documents 需要有一个 Document Type Declaration ，虽然这并不是XML所必须。
+</para>
+<screen>
+&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V3.1.4//EN"
+                         "http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd"&gt;
+</screen>
+</listitem>
+<listitem>
+<para>
+An Internal Subset
+</para>
+<para>
+在一个Document Type Declaration 中，可以包含一个或者多个 Internal Subset，如：
+</para>
+<screen>
+&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V3.1.4/EN"
+                         "http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd" [
+&lt;!ENTITY nwalsh "Norman Walsh"&gt;
+&lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
+&lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
+]&gt;
+</screen>
+</listitem>
+
+<listitem>
+<para>
+The Document (or Root) Element
+</para>
+<para>
+如下面的 &lt;boot&gt; 和 &lt;/boot&gt; 即是该文档的唯一根元素。
+</para>
+<screen>
+&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V3.1.4//EN"
+                         "http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd" [
+&lt;!ENTITY nwalsh "Norman Walsh"&gt;
+&lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
+&lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
+]&gt;
+&lt;book&gt;...&lt;/book&gt;
+</screen>
+</listitem>
+
+</orderedlist>
+</sect2>
+
+
+
+<sect2><title>DocBook文档的物理分割</title>
+<para>
+Breaking a Document into Physical Chunks
+</para>
+<screen>
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
+&lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
+&lt;!ENTITY chap3 SYSTEM "chap3.sgm"&gt;
+&lt;!ENTITY appa SYSTEM "appa.sgm"&gt;
+&lt;!ENTITY appb SYSTEM "appb.sgm"&gt;
+]&gt;
+&lt;book&gt;&lt;title&gt;My First Book&lt;/title&gt;
+&amp;chap1;
+&amp;chap2;
+&amp;chap3;
+&amp;appa;
+&amp;appb;
+&lt;/book&gt;
+</screen>
+</sect2>
+
+
+<sect2><title>DocBook文档的逻辑分割</title>
+<para>
+The Categories of Elements in DocBook
+</para>
+<screen>
+Sets 
+Books 
+Divisions, which divide books into parts 
+Components, which divide books or divisions into chapters 
+Sections, which subdivide components 
+Meta-information elements 
+Block elements : lists, admonitions, line-specific environments, synopses of several sorts, tables, figures, examples, ...
+Inline elements : Acronym, Emphasis ...
+</screen>
+</sect2>
+
+<sect2><title>DocBook示例</title>
+<para>
+撰写DocBook文档的过程，就是熟悉和使用DocBook元素的过程。Norman Walsh 和 Leonard Muellner 提供的可供免费下载的《DocBook: The Definitive Guide
+》，是最佳参考。本书并不罗列这400个元素的语法声明，而是对常用的元素作以总结和示范。
+</para>
+
+<sect3><title>Book,Chapter,Article</title>
+<para>
+</para>
+</sect3>
+<sect3><title>章节</title>
+<para>
+</para>
+</sect3>
+<sect3><title>anchor，link, ulink</title>
+<para>
+</para>
+</sect3>
+<sect3><title>文章头部信息</title>
+<para>
+</para>
+</sect3>
+<sect3><title>列表</title>
+<para>
+itemizedlist, orderedlist, ...
+</para>
+</sect3>
+<sect3><title>表格</title>
+<para>
+itemizedlist, orderedlist, ...
+</para>
+</sect3>
+<sect3><title>嵌入图片</title>
+<para>
+</para>
+</sect3>
+<sect3><title>Screen, programlist, co</title>
+<para>
+</para>
+</sect3>
+<sect3><title>emphsis, phrase, quote, system, filename, ...</title>
+<para>
+</para>
+</sect3>
+<sect3><title>faq</title>
+<para>
+</para>
+</sect3>
+</sect2>
+
+<sect2><title>DTD 与 DSSSL</title>
+<para>
+DTD 规定语法、语义；DSSSL 定义样式。
+</para>
+
+<!--sect4><title>A Survey of Stylesheet Languages</title-->
+<para>
+A Survey of Stylesheet Languages
+</para>
+<para>
+Over the years, a number of attempts have been made to produce a standard 
+stylesheet language and, failing that, a large number of proprietary languages 
+have been developed. 
+</para>
+<itemizedlist>
+<listitem>
+<para>
+DSSSL
+</para>
+<para>
+International Organization for Standardization (ISO) created DSSSL, 
+the Document Style Semantics and Specification Language. Subsets of 
+DSSSL are supported by Jade and a few other tools, but it never achieved 
+widespread support. 
+</para>
+</listitem>
+<listitem>
+<para>
+CSS
+</para>
+<para>
+The W3C CSS Working Group created CSS as a style attachment language 
+for HTML, and, more recently, XML. 
+</para>
+</listitem>
+<listitem>
+<para>
+XSL
+</para>
+<para>
+Most recently, the XML effort has identified a standard Extensible 
+Style Language (XSL) as a requirement. The W3C XSL Working Group is 
+currently pursuing that effort. 
+</para>
+</listitem>
+
+<listitem>
+<para>
+示例，对于如下的DocBook片断，相应的各种样式表的定义如下：
+</para>
+<screen>
+&lt;para&gt;
+This is an example paragraph. It should be presented in a
+reasonable body font. &lt;emphasis&gt;Emphasized&lt;/emphasis&gt; words
+should be printed in italics. A single level of 
+&lt;emphasis&gt;Nested &lt;emphasis&gt;emphasis&lt;/emphasis&gt; should also
+be supported.&lt;/emphasis&gt;
+&lt;/para&gt;
+</screen>
+<para>
+dsssl
+</para>
+<screen>
+(element para
+  (make paragraph
+    (process-children)))
+
+(element emphasis
+  (make sequence
+    font-posture: 'italic
+    (process-children)))
+
+(element (emphasis emphasis)
+  (make sequence
+    font-posture: 'upright
+    (process-children)))
+</screen>
+
+<para>
+css
+</para>
+<screen>
+para              { display: block }
+emphasis          { display: inline;
+                    font-style: italic; }
+emphasis emphasis { display: inline;
+                    font-style: upright; }
+</screen>
+
+<para>
+xsl
+</para>
+<screen>
+&lt;?xml version='1.0'?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"
+                xmlns:fo="http://www.w3.org/XSL/Format/1.0"&gt;
+
+&lt;xsl:template match="para"&gt;   
+  &lt;fo:block&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:block&gt;
+&lt;/xsl:template&gt;  
+
+&lt;xsl:template match="emphasis"&gt;
+  &lt;fo:sequence font-style="italic"&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:sequence&gt;
+&lt;/xsl:template&gt;  
+
+&lt;xsl:template match="emphasis/emphasis"&gt;
+  &lt;fo:sequence font-style="upright"&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:sequence&gt;
+&lt;/xsl:template&gt;  
+
+&lt;/xsl:stylesheet&gt;
+</screen>
+
+</listitem>
+</itemizedlist>
+<!--/sect4-->
+
+</sect2>
+
+</sect1>

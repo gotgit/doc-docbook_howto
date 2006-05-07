@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sect1 id="doc-project"><title>文档的软件工程</title>
+<sect2><title>CVS进行版本控制</title>
+<para>
+cvs...
+</para>
+<!--listitem>
+<para>
+知识积累的需要
+</para>
+<para>
+记忆衰退是客观存在的，会使用户-作者失去对程序的了解，于是他不得不重拾自己劳动的各个细节。
+</para>
+<listitem>
+<para>
+HTML 不是 DocBook
+</para>
+</listitem>
+<listitem>
+<para>
+找到了DocBook
+</para>
+<para>
+DocBook就是以上问题的答案。使用DocBook，文档再也不会是一旦完成便已寿终正寝了（我把这种文档称作僵尸文档）。写文档也将不再是为了应付工作，而真正成为个人知识积累工具。
+</para>
+</listitem>
+<listitem>
+<para>
+DocBook和CVS是天生的一对
+</para>
+<para>
+用CVS为DocBook文档做版本控制，可以方便的记录文档的历史，可以随时备份和找回删除的内容。
+</para>
+</listitem>
+<listitem>
+<para>
+与XML的第一次亲密接触
+</para>
+<para>
+随着微软 .NET 战略的实施，XML 成为了 IT 的新宠儿，正受到了越来越多的重视。但是信手拈来一本XML方面的专业书籍，一定为其中扑面而来的新概念吓跑。学习XML的最好方法就是实践，我们为什么不从DocBook开始呢？
+</para>
+</listitem>
+
+</listitem-->
+
+
+<!--sect2><title>CVS服务器管理：民主与集中兼得</title>
+<para>
+文档由个人管理，一方面增加了责任感和荣誉感，另一方面导致了文档的分散而难于管理；
+而文档的统一管理，不但使个人操作不便，更降低了维护文档的积极性和归属感。
+</para>
+<para>
+合理配置CVS服务器，鱼与熊掌可以兼得。
+</para>
+<orderedlist>
+<listitem>
+<para>
+CVS服务器目录结构
+</para>
+<para>
+假设CVS的服务器的主目录：/home/repos-user下，有目录 DocBook 和 jiangxin。
+</para>
+<para>
+其中 DocBook 目录为开放源码的文档（当然也可以设置不同权限，变得不开放），
+存放需要集中管理的文档的源代码。jiangxin 为个人目录，其下的src目录为个人
+源码，web 为个人主页的根目录。
+</para>
+</listitem>
+<listitem>
+<para>
+修改配置文件： CVSROOT/modules 
+</para>
+<screen>
+# pwd
+/home/jiangxin/work/web
+
+# cvs -d :pserver:jiangxin@10.0.0.152:/home/repos-user co CVSROOT
+# cd CVSROOT
+# cat modules << EOF
+######## 将如下内容添加到文件
+johnson_homepage      jiangxin/web \
+                      &amp;docbook/cyberwall \
+                      &amp;docbook/nightlybuild \
+                      &amp;docbook/pm_fw_plan_2_4 \
+                      &amp;docbook/steam_trans
+EOF
+
+</screen>
+</listitem>
+<listitem>
+<para>
+从CVS Checkout 自己的网站
+</para>
+<screen>
+# cd ~/work/web
+# cvs -d :pserver:jiangxin@10.0.0.152:/home/repos-user login
+# cvs -d :pserver:jiangxin@10.0.0.152:/home/repos-user co -c
+# cvs -d :pserver:jiangxin@10.0.0.152:/home/repos-user co -d home johnson_homepage
+# cd home
+</screen>
+<para>
+修改 apache 的配置文件 httpd.conf, 指定文档的根目录为： "/home/jiangxin/work/web/home"。
+</para>
+</listitem>
+<listitem>
+<para>
+鱼与熊掌兼得
+</para>
+<para>
+修改 "/home/jiangxin/work/web/home/docbook/" 下的文档，并 Checkin 到 CVS，同时更新了个人
+网页和统一管理的文档。
+</para>
+</listitem>
+
+</orderedlist>
+
+</sect2-->
+
+</sect2>
+
+<sect2><title>目录结构和Web发布</title>
+<para>
+apache...
+</para>
+</sect2>
+
+<sect2><title>Nightly Build</title>
+<sect3><title>自动化编译</title>
+<para>
+make...
+</para>
+</sect3>
+
+<sect3><title>计划任务</title>
+<para>
+crontab...
+</para>
+</sect3>
+</sect2>
+
+<sect2><title>文档检索</title>
+<para>
+htdig...
+</para>
+</sect2>
+
+</sect1>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"   
+	"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+<!ENTITY myweb "<ulink url='http://www.worldhello.net'>http://www.worldhello.net</ulink>">
+]-->
+<sect1 id="why-docbook"><title>DocBook 概述</title>
+
+<sect2 id="sect-whydocbook"><title>为什么使用 DocBook</title>
+<para>
+为什么要使用DocBook呢？
+</para>
+<itemizedlist>
+<listitem>
+<para>
+实现单一源文件维护
+</para>
+<para>
+一个文档需要不同的格式输出，并不算罕见。因为今天用户的环境千差万别，用户习惯的文档格式也是五花八门，要想使得更广大的用户群能够阅读到您所提供的电子文档，同一内容的不同输出就变得非常重要。但这样就大大增加了文档维护的困难，为文档工程师带来沉重的负担，单一源文件维护（single-sourcing）就成了迫切的需要。
+</para>
+<para>
+DocBook文档采用 SGML/XML 格式。开放的数据格式配合丰富的工具软件，让单一源文件维护成为了可能。
+</para>
+</listitem>
+<listitem>
+<para>
+实现文档的版本控制
+</para>
+<para>
+没有版本控制，软件研发的管理将处于一种作坊式的无序状态。而文档又何尝不是如此呢？
+</para>
+<para>
+如果你问一个采用了版本控制系统的团队的开发人员，今天的代码和昨天的代码有什么不同，相信他会连一个增加的标点都会告诉你。而你要去问他，你的第二版的概要设计比第一版多了哪些东西，他可能就要支支吾吾了。这是什么原因造成的呢？
+</para>
+<para>
+目前几乎所有的版本控制系统、代码比较程序，只能对纯文本进行完美的、增量的版本控制。而像WORD、PDF等格式的文档，是以二进制的形式存在的，难以实现各个副本之间的比较。而DocBook文档是存文本格式的文档，可以类似代码管理一样进行文档的版本控制。
+</para>
+</listitem>
+<listitem>
+<para>
+IT企业的知识管理和文档管理
+</para>
+<para>
+IT企业中的知识管理、文档管理关乎企业的发展和生存。试想处于知识经济前沿的IT企业如果没有了知识管理，必然造成知识老化，被新兴的企业淘汰；试想人员变动频繁的IT企业没有了文档管理，业务的连续性就会随着核心人员的离去而受到致命一击。
+</para>
+<para>
+虽然大多数IT企业都对员工有着撰写各种文档的要求，但是大多数文档只是为应付领导而存在，一旦完成便束之高阁，不加维护，且难以维护，成为文件服务器中的数字垃圾。
+</para>
+<para>
+DocBook文档由于能够进行版本控制，使得多人参与撰写和维护成为了可能。积极的参与一方面提高了文档的更新频率，另一方面提高了员工的参与意识和良好的知识管理的习惯。
+</para>
+</listitem>
+<listitem>
+<para>
+个人知识积累、知识共享的好帮手
+</para>
+<para>
+在知识经济的时代，知识就是资本，但是这个资本不能从天而降，需要靠不断的积累；知识有很强的时效性，需要不断的更新。IT行业的从业人员，更无时无刻不要面对新知识，需要解决新问题。如果只是简单的求新、求变，不注重知识的积累，那么当有一天对新鲜事物丧失兴趣或者无力追捧的时候，就是需要离开这个行业的时候了。这也是这个行业的一条流行用语意义之所在——“搞IT是在吃青春饭”。
+</para>
+<para>
+IT行业需要新鲜血液没错，但它更需要经验丰富的领军人物。怎样才能让自己的职业生涯更加持久，我的答案是知识积累。DocBook作为技术文档的撰写模式，它的持久性、可维护性、可版本控制，使得它可以作为个人知识总结、积累的得力途径。
+</para>
+<para>
+&myweb; 就是我用DocBook技术建立的个人知识积累之所。通过本书，介绍给大家。
+</para>
+</listitem>
+<listitem>
+<para>
+采用DocBook格式写文档的风险有多大？
+</para>
+<para>
+一方面，是学习成本的忧虑。学习DocBook，就必然要学习SGML/XML的基础知识，熟悉DocBook DTD定义的元素。SGML/XML的学习要经历一条陡峭的学习曲线，可能会遇到一定的挫折。但是以我的经验，开始使用DocBook并不需要成为SGML/XML专家，而且随着DocBook的使用，会加深对SGML/XML的理解。从实际入手学习XML这一今日之星，不能不说是意外的收获。
+</para>
+<para>
+另一方面，是对应用软件的顾虑。诚然撰写DocBook文档，目前还没有像Word、WPS这样所见即所得的文档编辑工具，更多的是使用最简单的纯文本编辑工具，这可能吓跑好多人。撰写DocBook文档，就要改变撰写文档的方式，这是一关。DocBook文档是一种结构化的文档，表现形式并不是在文档撰写过程中需要考虑的，把文档撰写者从文档的格式化中解放出来，增加了文档格式的统一，也一定程度的减少了工作量。
+</para>
+</listitem>
+<listitem>
+<para>
+采用DocBook格式的文档会不会过时
+</para>
+<para>
+DocBook格式的文档是纯文本的、结构化的，也是自解释的。相比二进制格式的文档，更易解析。我们可能遇到这样的情况：找出十年前的一个文档，发现它是基于某一个专有的文档编辑软件编写的二进制格式的文档，如果这种编辑软件现已不流行，甚至已经功成身退，你有信心能够顺利打开它么？这个文档可能就成了天书、数字垃圾。是否想过今天我们的WORD文档，十年后是否也会象今天一样潇洒的打开？再想象一下一百年后有个历史学家想要查找一个电子文档库，如果是诸如Word的二进制文档，这些历史学家必须绞尽脑汁的去破解它们，这不会比破译口令更容易。
+</para>
+<para>
+对于一个要长久保存的文档，一个易于理解的格式是多么的重要。大胆的使用DocBook来撰写你的文档，它能帮你写出传世之作。
+</para>
+</listitem>
+</itemizedlist>
+
+</sect2>
+
+<sect2 id="what-docbook"><title>什么是DocBook</title>
+<para>
+前面说了这么多DocBook的好话，大家也粗粗的对DocBook有了一点感观上的认识，那么DocBook到底是什么呢？
+</para>
+<itemizedlist>
+<listitem>
+<para>
+DocBook提供了一种新的文档撰写体系
+</para>
+<para>
+DocBook提供了一个使用SGML/XML撰写结构化文档的系统。这个系统非常适合于计算机类的文章、书籍、论文等的出版，当然并不仅仅限于计算机类。DocBook已经被Linux、FreeBSD等众多的项目制定作为文档撰写格式，并且有越来越多的组织和个人开始使用。
+</para>
+</listitem>
+<listitem>
+<para>
+DocBook是一种SGML/XML方言
+</para>
+<para>
+DocBook是HTML的姐妹，是一种适用于电子文档的标记语言。更为准确的说，DocBook是使用SGML/XML为文档撰写而定义的一套DTD（文档类型定义），即为文档撰写定义了一套开放标准的文档格式，是一种适合技术文档的SGML/XML方言。
+</para>
+<para>
+由于HTML也是一种SGML/XML方言，因此我们说DocBook和HTML是同一层次的东西。例如：HTML用&lt;p&gt;来表示段落标记，而DocBook用&lt;para&gt;和&lt;/para&gt;表示。
+</para>
+</listitem>
+<listitem>
+<para>
+DocBook的文档的浏览和显示，需要借助样式表
+</para>
+<para>
+我们熟知的HTML，可以由浏览器，如微软的IE，网景的Mozilla，直接浏览、显示。这是由于浏览器理解HTML的标签的含义，而且HTML中存在着的大量描述表现形式的标签，更是为了显示输出而存在的，如标签 &lt;font&gt;、&lt;b&gt;、&lt;i&gt;。
+</para>
+<para>
+单独的SGML/XML文件却没有通用的浏览器直接显示，这是由于利用SGML/XML可能创建的标签不计其数，没有哪个工具能够完全理解。而真正要以一定的格式显示SGML/XML文件，需要借助样式表，如：CSS、DSSSL、XSL。
+</para>
+<para>
+DocBook作为一种SGML/XML的应用，也具有这个特征。DocBook是绝对的面向结构的文档，不包含任何带有表现语义的标签。
+</para>
+</listitem>
+<!--
+<para>
+早期的 Word 和 WPS 文档都是典型的面向表现的文档。就是说这种文档中充斥了对格式的描述，这个字是三号字，那些是五号字，这些是黑体，那些是斜体。那时候，我们刚刚为所见即所得（WYSWYG）的方式撰写文档而欢欣鼓舞的时候，就又开始为频繁的调整、美化格式而浪费时间。现在大多数字处理软件都引入了结构化文档的概念，如：Word/WPS的模板的概念。但是由于向下兼容的历史包袱，使他们不可能成为完全的面向结构的文档。而DocBook则是绝对的面向结构的文档，不包含任何带有表现语义的标签。
+</para>
+<para>
+HTML虽然和DocBook同宗同祖，但HTML有大量面向表现的格式化标签、语法不严谨、描述性太差，很难作为向其它格式转换的中介。DocBook则可以完全胜任这个工作。
+</para>
+</listitem-->
+<listitem>
+<para>
+广义的DocBook
+</para>
+<para>
+正如我们要了解HTML，就必然要熟悉浏览器、WWW的概念那样，广义的DocBook也不仅仅包括一套由SGML/XML定义的面向文档撰写的标记语言，还需要学习SGML/XML相关概念、样式表、工具软件等等。
+</para>
+</listitem>
+</itemizedlist>
+
+</sect2>
+
+<sect2><title>DocBook历史</title>
+<para>
+DocBook 已经有十来年的历史了。它起源于1991年，HaL Computer Systems和O'Reilly公司的一个合作项目。该项目负责推动和以Troff标记语言标记的Unix文档资料的交互。随着该项目不断壮大，该项目的维护便由论坛——Davenport小组维护。1998年，在OASIS(Organization for the Advancement of Structured Information Standards，结构化信息标准促进组织)下成立了一个专门的技术委员会。
+</para>
+<itemizedlist>
+<listitem>
+<para>
+HaL 和 O'Reilly公司阶段
+</para>
+<para>
+DocBook的DTD首先由HaL 和 O'Reilly公司联合在1991年设计和实施。O'Reilly公司作为一个出版公司，在开源项目的文档的出版和发行方面是领导者，当年的项目就是为了在Unix的使用了troff格式标记的文档和出版格式之间的转换。
+</para>
+<para>
+当1.1版本的DocBook设计出来后，O'Reilly公司便开设了一个论坛——Davenport小组，在论坛讨论和维护DocBook。1994年，Davenport小组成为了DocBook官方的维护组织。
+</para>
+</listitem>
+<listitem>
+<para>
+Davenport小组阶段
+</para>
+<para>
+在Davenport小组的主持下，DocBook DTD扩展了它的应用范围，越来越多的用户使用，使用的范围也越来越广——不再被单单当作转换的工具，而是直接用具备SGML功能的工具编辑、撰写DocBook文件，直接出版成为出版物。作为当时DocBook两大主要客户，Novell 和 Sun 公司，对于DocBook的设计影响深远。
+</para>
+<para>
+为了帮助用户理解和管理DocBook变更，Davenport小组为DocBook DTD的版本建立了如下规则：
+</para>
+
+<itemizedlist>
+<listitem>
+<para>
+小版本号的变化（如：2.1到2.2版本的变化），	可以添加新的标签，但是不能影响版本的向下兼容。因此遵守 n.0 版本的DocBook DTD规范的文档，也必定遵守 n.m 版本的DocBook DTD规范。
+</para>
+</listitem>
+<listitem>
+<para>
+主版本号的变化（如：2.2和3.0版本之间的变化），除了添加了新标签外，并不保证向下兼容。变更，必须在最新的变更说明中提及。
+</para>
+</listitem>
+<listitem>
+<para>
+主版本号的变更的时间间隔至少在一年以上。
+</para>
+</listitem>
+</itemizedlist>
+<para>
+DocBook DTD 3.0 于1997年1月发布。虽然，之后的DocBook用户群仍在增加，但是由于Davenport小组的很多中坚力量把更多的经历投入到XML当中，DocBook的开发速度减慢了。虽然提出了创建一个XML版本的DocBook想法，但是没有实施。
+</para>
+<para>
+于是赞助者提出了关闭Davenport，并且用更加正式的方式为DocBook用户提供支持。于是OASIS成为了DocBook新的家。OASIS DocBook技术委员会于1998年7月成立，Sun Microsystems的Eduardo Gutentag为主席。
+</para>
+</listitem>
+<listitem>
+<para>
+OASIS阶段
+</para>
+<para>
+OASIS DocBook技术委员会继续着Davenport小组的工作。这次转换非常的顺利，因为两个组织的核心设计人员未变。
+</para>
+<para>
+DocBook 3.1 于1999年2月发布，这是OASIS的第一个版本。目前最新版本是4.2。
+</para>
+<para>
+目前除了DTD格式的DocBook之外，已经有了三个其它格式的实验性的版本，分别是：XML Schema，RELAX，TREX。
+</para>
+</listitem>
+</itemizedlist>
+<para>
+DocBook仍在继续发展当中，欲了解DocBook的最新动态，请参考：<ulink url="http://oasis-open.org">oasis-open.org</ulink>。
+</para>
+</sect2>
+
+<sect2><title>本书的组织</title>
+<para>
+接下来的章节中，我们先通过一个最为简单的例子《Hello World》，来学习DocBook环境的搭建；
+</para>
+<para>
+
+</para>
+<para>
+
+</para>
+<para>
+
+</para>
+<para>
+
+</para>
+</sect2>
+
+</sect1>

@@ -1,0 +1,1447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"   
+	"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+<!ENTITY myweb "<ulink url='http://www.worldhello.net'>http://www.worldhello.net</ulink>">
+]-->
+<sect1 id="sgml-primary"><title>SGML/XML入门</title>
+<para>
+我们在上一个章节囫囵吞枣的浏览了一下撰写和编译DocBook的全部过程。现在是我们静下心来，好好补一补我们的基础知识了。
+</para>
+<sect2><title>基础概念</title>
+<para>
+SGML/XML有着陡峭的学习曲线，主要是因为一开始就要面对铺天盖地的新概念。学习DocBook，虽然并不需要对SGML/XML的所有概念都去透彻了解，但是需要掌握的也仍是够怕人的。下面的这些概念都熟悉么？如果答案是肯定的，那么你可以轻松的跳过这一章。
+</para>
+<orderedlist>
+<listitem>
+<para>
+什么是标记语言？
+</para>
+<para>
+传统意义上的标记（markup），我们都应该不会陌生。当我们还在读书的时候，老师改过的试卷，经常是满篇的红色的醒目的对号、错号、问号、波浪线，或者意味深长的评语，这些都是标记。广义上来说，一篇文章中的标点符号、空格也都可以称作是标记。看看韩愈是怎么说的，“句读之不知，惑之不解也”，就是这些语法标记对于帮助我们读懂文章，实在是太重要了。
+</para>
+<para>
+标记语言（markup language），则特指用一系列约定好的标记来对电子文档进行标记，来实现对电子文档的语义、结构、格式的定义。这些标记必须能够和容易的和内容相区分，易于识别。标记语言必须定义什么样的标记是允许的，什么样的标记是必须的，标记是如何与文档的内容向区分的，以及标记的含义是什么？
+</para>
+</listitem>
+
+<listitem>
+<para>
+什么是SGML？
+</para>
+<para>
+标准通用标记语言（Standard Generalized Markup Language ，SGML）,它是用来描述电子文档标记的国际标准，SGML 通过这些标记来描述文档结构，以便于存储、提取、处理文档中的数据。更准确地说，SGML 是一种元语言——关于语言的语言。为我们熟知的HTML就是源自SGML的一种语言，或者说方言。
+</para>
+</listitem>
+
+<listitem>
+<para>
+什么是元素？
+</para>
+<para>
+元素（Elements），就是SGML/XML文档中的具有一定结构的文字片断，是标记语言的基本组成部分。大多数元素的开头和结尾分别由一对相匹配的起始标签和结束标签构成，例如：HTML中的段落标记“&lt;p&gt;”和“&lt;/p&gt;”和所标记的内容构成了一个段落元素。也有一些元素可以是空标签，没有结束标签和它相匹配，就像HTML中的断行标签“&lt;br&gt;”。
+</para>
+<para>
+还要说明的是，不同类型的元素被赋予了不同的名称，但SGML本身并不关心这些元素的含义，而是关心这些元素的语法、相互之间的嵌套等。具体对这些元素的理解，则交给应用程序去完成，这就如同不同浏览器对于同一个网页可能有不同的表现形式。
+</para>
+</listitem>
+
+<listitem>
+<para>
+什么是实体？
+</para>
+<para>
+实体（Entities），就是一个被命名了的标记数据块，可以是一个字符串，也可以是一个完整的文件。实体可以包含已析（parsed）数据或未析（unparsed）数据。已析数据由字符组成，其中一些字符组成字符数据，另一些字符组成标记。未析数据则是那些不进行语法解析的数据，如图形文件等。
+</para>
+<para>
+引用一个已经定义的实体的格式为：&amp;实体名称;，即在实体名称前面加上“&amp;”符号，在实体名称后面加上分号“;”。如HTML中的“&amp;lt;” 即代表小于号“&lt;”。
+</para>
+</listitem>
+
+<listitem>
+<para>
+什么是DTD？
+</para>
+<para>
+SGML引入了文档类型的概念，并由此引入了文档类型定义（Document Type Definition: DTD）。文档按照其内容和结构可能分属于不同的类，如数学家能够用文档来记录数学公式，化学家用SGML文档来描述分子结构式，DocBook被用来撰写文档，等等，这些都是不同的文档类型的例子。
+</para>
+<para>
+每种不同类型的文档，遵守各自的DTD规范。例如，一个DocBook文档，需要包含一个标题、作者信息、摘要、和由段落组成的文章内容。而缺少标题的文档，便不符合DocBook的DTD，不是合格的DocBook文档。具有标题，但是标题放在了正文的最后，也不符合DocBook DTD，也不是合格的DocBook文档。
+</para>
+<para>
+文档类型定义 (DTD) 实际上就是一套关于标记符的语法规则，它包含了对元素的定义，指出可以在文档中使用哪些标记符, 它们应该按什么次序出现, 哪些标记符可以出现于其它标记符中, 哪些标记符有属性, 等等。属于某种类型的文档，可以通过一个应用程序来解析，检查是否所有的元素都被定义以及元素出现的次序是否正确。属于同一种类别的文档可以按照一致的方式来处理。
+</para>
+<para>
+并不存在一个通用的DTD，想使用SGML/XML进行数据交换的行业或组织可以定义它们自己的DTD。HTML，DocBook都仅仅是DTD的一种，SGML的一个实例。
+</para>
+<para>
+我们所熟知的HTML是SGML的一个实例，它的DTD作为标准被固定下来，因此，HTML不能作为定义其它置标语言的元语言。而目前的热点XML则是SGML的一个子集，严格地讲，XML也还是SGML。与HTML不同的是，XML有DTD，因而也可以象SGML那样，作为元语言，来定义其它文件系统，或称其它标记语言。
+</para>
+</listitem>
+
+<listitem>
+<para>
+什么是XML？
+</para>
+<para>
+可扩展标记语言（Extensible Markup Language，XML），它是标准通用标记语言（Standard Generic Markup Language，SGML）的一个子集。其目的在于使得在 Web 上能以现有超文本标记语言（Hypertext Markup Language，HTML）的使用方式提供，接收和处理通用的 SGML 成为可能。XML 的设计既考虑了实现的方便性，同时也顾及了与 SGML 和 HTML 的互操作性。
+</para>
+<para>
+SGML的相关概念，对于 XML 也是有效的，虽然有着细微的差别。我们在本章的讨论，没有特殊说明，对于SGML和XML来说都是有效的，并且我们会在本章的最后，用单独的章节比较SGML和XML的异同。
+</para>
+</listitem>
+
+</orderedlist>
+</sect2>
+
+<sect2><title>关于标记语言</title>
+<sect3><title>什么是标记语言</title>
+<para>
+超文本置标语言HTML（HyperText Markup Language）是当今信息高速公路上最为风光的主角。它与它的老祖宗SGML和当今IT新星XML都属于一个大家族——标记语言家族。那么什么是标记语言？
+</para>
+<para>
+传统意义上的标记（markup），我们都应该不会陌生。当我们还在读书的时候，老师改过的试卷，经常是满篇的红色的醒目的对号、错号、问号、波浪线，或者意味深长的评语，这些都是标记。我们在看书的时候，也喜欢用荧光笔将重要的内容加亮，以帮助我们在日后重读文章时，能够提纲挈领，迅速抓住要害，这也是标记。从广义上来说，一篇文章中的标点符号、空格也都可以称作是标记。看看韩愈是怎么说的，“句读之不知，惑之不解也”，就是这些语法标记对于帮助我们读懂文章，实在是太重要了。
+</para>
+<para>
+标记语言（markup language），则特指用一系列约定好的标记来对电子文档进行标记，来实现对电子文档的语义、结构、格式的定义。这些标记必须能够和容易的和内容相区分，易于识别。标记语言必须定义什么样的标记是允许的，什么样的标记是必须的，标记是如何与文档的内容向区分的，以及标记的含义是什么。
+</para>
+<para>
+我们来看看一段HTML代码：
+</para>
+<informalexample>
+<programlisting>
+<![CDATA[
+<p>标记语言的代表：</p>
+<ul>
+  <li>HTML</li>
+  <li>SGML</li>
+  <li>XML</li>
+</ul>
+]]>
+</programlisting>
+</informalexample>
+<para>
+文中的标签特征分明，很容易就可以和实际的内容区分开。标签由小于符号（&lt;）和大于符号（&gt;）括起来的文字组成标签，浏览器能够解读这些标签，并按照预定义的格式显示如下：
+</para>
+<informalexample>
+<para>
+标记语言的代表：
+</para>
+<itemizedlist>
+<listitem>
+<para>
+HTML
+</para>
+</listitem>
+<listitem>
+<para>
+SGML
+</para>
+</listitem>
+<listitem>
+<para>
+XML
+</para>
+</listitem>
+</itemizedlist>
+</informalexample>
+
+<para>
+当我们对“置标”的含义有了一个明确的理解后，让我们再看看标记语言的发展历史。
+</para>
+</sect3>
+
+<sect3><title>标记语言的历史</title>
+<para>
+了解标记语言发展的历史，将对于HTML，SGML，XML之间的联系和正确理解标记语言这一技术更有帮助。
+</para>
+<para>
+为了促进数据的交换和操作，人们早就产生了将文件结构化为标准的格式的动机。IBM在20世纪60年代，创建了GML（Generalized Markup Language，通用标记语言），以在其出版系统内部实现这一需求。IBM使用GML来用单一类型的源文件维护书籍、报表以及其他文件。
+</para>
+<para>
+SGML（Standard Generalized Markup Language，标准通用标记语言）从IBM的GML演化而来，是第一个标准化的信息结构化技术。SGML成为了IBM内部格式化和维护合法文件的手段。SGML后来被扩展和修改，作为一种全面的信息标准以适应工业范围的广泛应用。但直到1986年，SGML才成为了ISO标准。尽管SGML的功能非常强大，但是由于它非常复杂，需要一大堆昂贵的软件配合运行，因而在很长一段时间都没有被推广。
+</para>
+<para>
+1989年，欧洲粒子物理实验室（CERT）的研究员 Tim Berners-Lee 和 Anders Berglund 两人创建了一种基于标记的语言，为在Internet上共享的文章做标记，于是HTML诞生了。HTML可以看作是SGML的简化的应用，它的诞生，推动了信息产业的大发展。
+</para>
+<para>
+HTML当初仅仅提供了一种对静态文本信息表现的方法，但显然并不能适应越来越多的需要。随后越来越多的标签诞生了，象&lt;img&gt;用于描述图片，&lt;script&gt;通过为网页加入脚本支持，提供动态网页内容，两大浏览器厂商微软和网景，甚至创建了由自己的产品兼容的标签。于是HTML成了一个大而不当，失去了严谨结构化的怪物。
+</para>
+<para>
+1996年，W3C寻找一种在WEB中应用SGML的灵活性和强大功能的方法，这导致了1998年2月，XML1.0规范的发布。XML（eXtensible Markup Language，可扩展的标记语言）具备了SGML的核心特性，又非常的简洁，XML规范的内容甚至不到SGML的十分之一，XML的简洁可见一斑。XML的应用随即如雨后春笋般的展开，它被看作是IT的明日之星。
+</para>
+<para>
+SGML和HTML之间，XML和HTML之间的差别是巨大的，HTML可以看作是SGML/XML的一种具体应用，SGML/XML则作为元语言，则可以定义出无数新的标记语言，如DocBook即是一种。SGML和XML之间的差别则是微小的，XML作为SGML的子集，继承了SGML的优点：扩展性、结构化和有效性。因此为了学习DocBook，我们需要从SGML/XML学起。
+</para>
+
+</sect3>
+</sect2>
+
+<sect2><title>SGML/XML语法基础</title>
+<para>
+SGML/XML文件由字符数据和标记组成，下面就是SGML/XML所支持的几种不同的标记：
+</para>
+
+<itemizedlist>
+<listitem>
+<para>
+元素标记
+</para>
+</listitem>
+<listitem>
+<para>
+处理指令
+</para>
+</listitem>
+<listitem>
+<para>
+文件类型声明
+</para>
+</listitem>
+<listitem>
+<para>
+实体引用
+</para>
+</listitem>
+<listitem>
+<para>
+注释
+</para>
+</listitem>
+<listitem>
+<para>
+标记片段
+</para>
+</listitem>
+</itemizedlist>
+
+<sect3><title>标记</title>
+<para>
+标记（Tag）用来描述元素，是语法中最显而易见的组成部分。例如：在DocBook中段落元素由标记&lt;para&gt;和标记&lt;/para&gt;构成。
+</para>
+<para>
+元素（Elements），这一术语，和标记的概念密不可分。它指的是SGML/XML文档中的具有一定结构的文字片断，大多数元素的开头和结尾分别由一对相匹配的起始标签和结束标签构成，也有一些元素可以是空标签，没有结束标签和它相匹配，就像HTML中的断行标签“&lt;br&gt;”。
+</para>
+<para>
+SGML和XML对于标记的规范略有不同。
+</para>
+
+<itemizedlist>
+<listitem>
+<para>
+SGML是大小写不敏感的，XML大小写敏感
+</para>
+<para>
+对于SGML，标签&lt;para&gt;和&lt;PAra&gt;是同一个标签，而对于XML则是不同的标签。DocBook中的标签都应该是小写的，因此我们无论在XML还是在SGML中，都应该养成用小写字母书写元素标签的习惯。
+</para>
+</listitem>
+<listitem>
+<para>
+SGML允许存在不匹配的标签，而XML必须严格匹配
+</para>
+<para>
+根本原因是，XML省略了SGML中定义DTD的语法中的一些细节，这在后面讲述DTD时，将要谈到。SGML允许出现不匹配的标签，如: &lt;anchor id="..."&gt;用来描述文挡中的内部跳转，可以单独存在。而这样的语法在XML中，是不允许的，即使对于&lt;anchor&gt;这样的空标签，也必须用独特的空标签表示方法表示。如：文内的跳转标志，XML中必须以 &lt;anchor id="..."/&gt;（在大于号的前面加上一个斜杠）表示。
+</para>
+</listitem>
+</itemizedlist>
+
+</sect3>
+
+<sect3><title>实体引用</title>
+<para>
+实体（Entities），就是一个被命名了的标记数据块，可以是一个字符串，也可以是一个完整的文件。实体可以包含已析（parsed）数据或未析（unparsed）数据。已析数据由字符组成，其中一些字符组成字符数据，另一些字符组成标记。未析数据则是那些不进行语法解析的数据，如图形文件等。
+</para>
+<para>
+引用一个已经定义的实体的格式为：&amp;实体名称;，即在实体名称前面加上“&amp;”符号，在实体名称后面加上分号“;”。如HTML中的“&amp;lt;” 即代表小于号“&lt;”。
+</para>
+</sect3>
+
+<sect3><title>注释</title>
+<para>
+注释为文件和数据提供说明，并且被处理程序所忽略。SGML/XML的注释格式和HTML一样，都是以 &lt;!-- 开始，以 --&gt; 结束。对注释的唯一限制就是注释不能嵌套。示例如下：
+</para>
+<screen>
+<![CDATA[
+<!-- 这是一端注释... -->
+]]>
+</screen>
+</sect3>
+
+<sect3><title>处理指令</title>
+<para>
+处理指令是向SGML/XML处理程序传递的特殊指令。例如：xml处理指令，必须作为XML文件的第一行存在。
+</para>
+<screen>
+<![CDATA[
+<?xml version="1.0" ?>
+]]>
+</screen>
+<para>
+这条命令对于XML这一发展中的标记语言的向下兼容有着非常重要的作用。当前的XML版本为1.0，但为避免给XML的发展设置历史的障碍，用这条处理指令向XML处理的应用程序提供了带兼容性信息的处理指令。
+</para>
+</sect3>
+
+<sect3><title>文件类型声明</title>
+<para>
+文件类型声明位于SGML/XML文件头部，主要有如下作用：
+</para>
+
+<itemizedlist>
+<listitem>
+<para>
+指定文件的根元素。
+</para>
+</listitem>
+<listitem>
+<para>
+指出文件的外部DTD。
+</para>
+</listitem>
+<listitem>
+<para>
+内部DTD，为文件定义元素、属性和实体等。
+</para>
+</listitem>
+</itemizedlist>
+<para>
+如下的例子即是本书的文件类型声明：
+</para>
+<screen>
+<![CDATA[
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V4.2b1//EN"  [
+<!ENTITY author "<ulink url='mailto:johnson@worldhello.net'>Johnson</ulink>">
+<!ENTITY orgname "<ulink url='http://www.worldhello.net'>worldhello.net</ulink>">
+<!ENTITY chap1  system "chap1.sgml">
+<!ENTITY chap2  system "chap2.sgml">
+<!ENTITY chap3  system "chap3.sgml">
+<!ENTITY chap4  system "chap4.sgml">
+<!ENTITY chap5  system "chap5.sgml">
+<!ENTITY chap6  system "chap6.sgml">
+<!ENTITY chap7  system "chap7.sgml">
+<!ENTITY chap8  system "chap8.sgml">
+<!ENTITY chap9  system "chap9.sgml">
+<!ENTITY chap10 system "chap10.sgml">
+<!ENTITY appendix system "appendix.sgml">
+]>
+]]>
+</screen>
+<para>
+该文件类型声明指定了文件的根元素是 article 元素，文件的外部DTD是 PUBLIC "-//OASIS//DTD DocBook V4.2b1//EN" 。而且通过内部DTD，定义了诸如作者姓名、各个章节的外部实体等。
+</para>
+</sect3>
+
+<sect3><title>CDATA片段</title>
+<para>
+CDATA片段，即是未解析字符数据片段。扩在CDATA片段中的内容，将不被XML解析器处理，而直接提供给应用程序。
+</para>
+<para>
+如果不用CDATA片段，想在文中显示上例中的文件类型声名，需要用如下方法表示，非常的不直观。
+</para>
+<screen>
+<![CDATA[
+<screen>
+&lt;!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V4.2b1//EN"  [
+&lt;!ENTITY author "&lt;ulink url='mailto:johnson@worldhello.net'&gt;Johnson&lt;/ulink&gt;"&gt;
+&lt;!ENTITY orgname "&lt;ulink url='http://www.worldhello.net'&gt;worldhello.net&lt;/ulink&gt;"&gt;
+&lt;!ENTITY chap1  system "chap1.sgml"&gt;
+&lt;!ENTITY chap2  system "chap2.sgml"&gt;
+&lt;!ENTITY chap3  system "chap3.sgml"&gt;
+&lt;!ENTITY chap4  system "chap4.sgml"&gt;
+&lt;!ENTITY chap5  system "chap5.sgml"&gt;
+&lt;!ENTITY chap6  system "chap6.sgml"&gt;
+&lt;!ENTITY chap7  system "chap7.sgml"&gt;
+&lt;!ENTITY chap8  system "chap8.sgml"&gt;
+&lt;!ENTITY chap9  system "chap9.sgml"&gt;
+&lt;!ENTITY chap10 system "chap10.sgml"&gt;
+&lt;!ENTITY appendix system "appendix.sgml"&gt;
+]&gt;
+</screen>
+]]>
+</screen>
+<para>
+但是采用CDATA段，就非常的简单而直观。
+</para>
+<screen>
+<![CDATA[
+<screen>
+<![CDATA[
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V4.2b1//EN"  [
+<!ENTITY author "<ulink url='mailto:johnson@worldhello.net'>Johnson</ulink>">
+<!ENTITY orgname "<ulink url='http://www.worldhello.net'>worldhello.net</ulink>">
+<!ENTITY chap1  system "chap1.sgml">
+<!ENTITY chap2  system "chap2.sgml">
+<!ENTITY chap3  system "chap3.sgml">
+<!ENTITY chap4  system "chap4.sgml">
+<!ENTITY chap5  system "chap5.sgml">
+<!ENTITY chap6  system "chap6.sgml">
+<!ENTITY chap7  system "chap7.sgml">
+<!ENTITY chap8  system "chap8.sgml">
+<!ENTITY chap9  system "chap9.sgml">
+<!ENTITY chap10 system "chap10.sgml">
+<!ENTITY appendix system "appendix.sgml">
+]>
+]]>
+]]&gt;
+&lt;/screen&gt;
+</screen>
+
+</sect3>
+
+</sect2>
+
+<sect2><title>数据模型</title>
+<sect3><title>元素</title>
+<para>
+我们已经在前面概要的介绍了元素（Elements）的概念。由一对相匹配的起始标签和结束标签组成的语义片断，就称为元素。例如：HTML中的段落标记“&lt;p&gt;”和“&lt;/p&gt;”和所标记的内容构成了一个段落元素。也有一些元素可以是空标签，没有结束标签和它相匹配，就像HTML中的断行标签“&lt;br&gt;”。
+</para>
+<para>
+标签由左右尖括号封闭起来的文字构成，形如：“&lt;...&gt;”。对于结束标签，则还要在左尖括号后加一个斜线，形如：“&lt;/...&gt;”。SGML允许某些元素已没有结束标签的形式存在，但XML则需要更严格的语法，不允许没有结束标签匹配的空标签，即使对于空标签，也要在结束的右尖括号前，加一个斜线，构成形如“&lt;.../&gt;”的格式，如：“&lt;br/&gt;”。
+</para>
+<para>
+一个文档中只能有一个根元素，就像一个标准的HTML网页，有且只有一个根元素“&lt;html&gt;”。该元素可以包含其他元素，这些元素构成了一个以根元素为根的树状结构。
+</para>
+<para>
+元素之间不能相互重叠，如下面的文字在SGML中就是不合法的。
+</para>
+<screen>
+<![CDATA[
+<B>Welcome to my homepage. There are some <I>DocBook<B> examples.</I>
+]]>
+</screen>
+<para>
+上面的示例中，&lt;B&gt;&lt;/B&gt;标签和&lt;I&gt;&lt;/I&gt;标签发生了重叠，这是不允许的。
+</para>
+<para>
+在标签中可以定义属性。以下是一个HTML中定义表格的标签，table是元素名，width="100%"和border="1"是其属性。
+&lt;table width="100%" border="1"&gt;
+</para>
+
+</sect3>
+
+<sect3><title>子元素和属性</title>
+<para>
+</para>
+</sect3>
+
+<sect3><title>元素的定义</title>
+<para>
+元素的定义是在 DTD 中完成的。
+</para>
+<para>
+以下就是在DTD中定义元素的示例：
+</para>
+<screen>
+<![CDATA[
+    <!ELEMENT anthology      - -  (poem+)>
+    <!ELEMENT poem           - -  (title?, stanza+)>
+    <!ELEMENT title          - O  (#PCDATA) >
+    <!ELEMENT stanza         - O  (line+)   >
+    <!ELEMENT line           O O  (#PCDATA) >
+]]>
+</screen>
+<para>
+上面几个元素声明的语法是SGML的DTD定义标准，XML和它稍有区别，我们在后面单辟一章来介绍。
+</para>
+<para>
+元素声明的语法，类似元素本身，也是由尖括号括起来的。在左尖括号之后的第一个字符一定是一个感叹号“!”。在感叹号之后，是一个关键字，指出所要声明的对象类型是什么。ELEMENT是少数关键字之一，指出所要声明的是元素本身。接下来的声明部分，由三部分组成。先是一个或者一组元素名，然后是由字符"-"和"O"组成的缩写规则（minimization rules），它指出起始标签和结束标签是否可有可无。最后是内容模型（content model），即该元素的内容由什么构成？是一些子元素或者字符？
+</para>
+
+<orderedlist>
+<listitem>
+<para>
+缩写规则（Minimization Rules）
+</para>
+<para>
+缩写规则定义了该元素的起始标签和结束标签是否可以省略。第一个字符定义了起始标签的状态，第二个字符定义了结束标签的状态，两个字符之间用空格分隔。字符"-"的含义是必须存在，不可省略，而字符"O"意味着标签可以省略。
+</para>	
+</listitem>
+<listitem>
+<para>
+内容模型（Content Model）
+</para>
+<para>
+由括号括起来的部分构成了元素定义的内容模型，定义了元素应该包含什么样的内容。内容模型由保留字或者其它子元素名称等构成。保留字中最常见的是“#PCDATA”，代表着可以被解析的字符，即定义的该元素可以包含任何可用字符。
+</para>
+<para>
+内容模型可以借助频度指示字（Occurrence Indicators）、分组连接符（Group Connectors）、例外处理（Exception）等，构成复杂的内容模型表达式，表示复杂的内容模型。
+</para>
+</listitem>
+<listitem>
+<para>
+频度指示字（Occurrence Indicators）
+</para>
+<para>
+可以在内容模型中，为保留字或者元素名称上加上频度指示字，如："+"，"?"，"*"。
+</para>
+<para>
+加号"+"，代表包含一个或者一个以上，但不能一个都没有。
+</para>
+<para>
+问号"?"，代表包含最多一个，当然也可以不出现。
+</para>
+<para>
+星号"*"，代表包含任意多个，也可以一个都不出现。
+</para>
+</listitem>
+<listitem>
+<para>
+分组连接符（Group Connectors）
+</para>
+<para>
+通过三种连接符，可以连接子元素构成复杂的内容模型表达式。这三种连接符是：","，"|"和"&amp;"符号。
+</para>
+<para>
+逗号连接的子元素，含意为子元素必须都出现，而且以指定的次序出现。
+</para>
+<para>
+"&amp;"连接的子元素，含意为子元素必须都出现，但对出现的次序不做要求。
+</para>
+<para>
+竖线，含意为所连接的子元素只出现一个。
+</para>
+</listitem>
+<listitem>
+<para>
+例外处理（Exception）
+</para>
+<para>
+在定义DTD时，有时候会发现有的元素几乎会出现在所有的元素中，如注释就可能出现在文章的各个部分。在规模比较小的DTD中，这个可能不是问题，但是要在一个非常庞大的DTD中，如DocBook的DTD，具有几百个元素，就会非常复杂。就需要利用这里讲例外处理，和后面要提到的参数实体来解决。
+</para>
+<para>
+例外处理，包括两种语法，一种是“包含”：可以在该元素的内容模型中的任何位置包含所指定的元素。另一种是“排除”：在当前内容模型中不能包含所指定的元素。其记法为在内容模型的最后用前置的加号或者减号建立包含或者排除元素列表。
+</para>
+</listitem>
+</orderedlist>
+<para>
+属性
+</para>
+
+</sect3>
+
+<sect3><title>外部DTD和内部DTD</title>
+<para>
+</para>
+</sect3>
+
+<sect3><title>其它方式构造数据模型</title>
+<para>
+XML SCHEMA
+</para>
+</sect3>
+
+<sect3><title>DocBook的数据模型</title>
+<para>
+SGML DTD
+</para>
+<para>
+XML DTD
+</para>
+<para>
+XML SCHEMA
+</para>
+</sect3>
+
+</sect2>
+
+
+<sect2><title>用样式表进行格式化</title>
+<para>
+</para>
+</sect2>
+
+<sect2><title>DSSSL</title>
+<para>
+DSSSL? 不要被这个缩略语吓坏，它是（Document Style Semantics and Specification Language）的缩写。DSSSL和SGML的关系，就如同CSS和HTML的关系一样。对于DTD来说，只关心元素之间的结构关系，并不关心元素的意义和具体的表现形式，而这正好是DSSSL的天下。一个DocBook文档，通过各种元素将文档内容结构化，但是看起来并不直观，不能提供诸如Word、PDF、网页一样的表现。DSSSL提供了一个将SGML文档到其他输出格式的标准方法。
+</para>
+<para>
+让我们先看一段 DSSSL 片断：
+</para>
+<screen>
+<![CDATA[
+(define (book-titlepage-recto-elements)
+  ;; elements on a book's titlepage
+  ;; note: added revhistory to the default list
+  (list (normalize "title")
+        (normalize "subtitle")
+        (normalize "graphic")
+        (normalize "mediaobject")
+        (normalize "corpauthor")
+        (normalize "authorgroup")
+        (normalize "author")
+        (normalize "editor")
+        (normalize "copyright")
+        (normalize "pubdate")
+        (normalize "revhistory")
+        (normalize "abstract")
+        (normalize "legalnotice")))
+
+(element emphasis
+  ;; make role=strong equate to bold for emphasis tag
+  (if (equal? (attribute-string "role") "strong")
+     (make element gi: "STRONG" (process-children))
+     (make element gi: "EM" (process-children))))
+]]>
+</screen>
+<para>
+也许那些骨灰级程序设计师和计算机史学家会对上述代码感到亲切，而对于像我这样了解程序设计语言是从basic、c开始的新手，一定会对这种语法一头雾水。这段代码的语法来自于 Scheme语言（LISP的一个变种）。
+</para>
+
+<sect3><title>Scheme语言入门</title>
+<para>
+最早听说 LISP，是 Stallman 的 GNU Emacs 中将 LISP 作为嵌入语言，定制和增强 Emacs。GNU Emacs 是一个文本编辑器，文本就是一种符号，而 Lisp 正好就是针对符号计算发明的，因此在GNU Emacs 中使用 Lisp 是顺理成章的事情。
+</para>
+<para>
+Lisp 语言的历史已经很久了，几乎与 Fortran 一样长。二十世纪五十年代，计算机科学家先是发明了针对数字计算的 Fortran 语言，后来针对符号计算，由MIT 的John McCarthy于1960年开发出了Lisp(List processing)语言。该语言原来是为表处理而设计的编程语言，后来广泛用于处理人工智能问题。Lisp 程序中充满了一对对嵌套的小括号，这些嵌套的符号表达式体现着递归。递归是数学上的基本概念之一，从递归理论出发，一切可以计算的函数最终都可以划归为几种基本的递归函数的种种组合。
+</para>
+<para>
+1994年时众多 Lisp 版本又得到了相当的统一，统一之后的版本称为Common LISP。Common Lisp 含有非常丰富的库，仅仅语言的规范就长达千页以上，包括面向对象的 CLOS。 
+</para>
+<para>
+Scheme 语言是 Lisp 的一个现代变种、方言，诞生于1975年，由 MIT 的 Gerald J. Sussman and Guy L. Steele Jr. 完成。Scheme语言的规范很短，总共只有50页，甚至连Common Lisp 规范的索引的长度都不到，但是却被称为是现代编程语言王国的皇后。它与以前和以后的 Lisp 实现版本都存在一些差异，但是却易学易用。
+</para>
+<para>
+DSSSL需要完成的工作是解析文档，它的设计就采用了Scheme语言。本书时介绍DocBook的专著，因此并不打算写一个Scheme大全，只是想通过蜻蜓点水的介绍使读者认识Scheme，能够达到看懂和简单的修改DSSSL。
+</para>
+
+<sect4><title>Scheme特点</title>
+<para>
+Scheme语言具有它独特的魅力，看看Scheme的语法特点：
+</para>
+<itemizedlist>
+<listitem>
+<para>
+括号嵌套
+</para>
+<para>
+Lisp 程序中充满了一对对嵌套的小括号，这些嵌套的符号体现了最基本的数学思想——递归。
+</para>
+</listitem>
+<listitem>
+<para>
+语法简洁
+</para>
+<para>
+Scheme语言的规范很短，总共只有50页。
+</para>
+</listitem>
+<listitem>
+<para>
+函数编程语言
+</para>
+<para>
+一个函数（Function）是这个编程语言中所谓的第一等的公民。也就是说函式可以像一个 int 或者 float 一样被很方便的传递来传递去。这也就是所谓"Functional 编程语言"中，Functional 一词的由来。
+</para>
+</listitem>
+<listitem>
+<para>
+自动内存管理
+</para>
+<para>
+自动内存管理可不是JAVA的专利呦。
+</para>
+</listitem>
+<listitem>
+<para>
+可移植性好
+</para>
+<para>
+Scheme开发的程序有很好的可移植性，这是由于Scheme是一种解释语言，在不同的平台都可以有相应的解释器。
+</para>
+</listitem>
+<listitem>
+<para>
+适合于作为脚本语言和嵌入语言
+</para>
+<para>
+语法简洁，这使得Scheme的实现可以非常的经济，一个Scheme解释器可以非常的小巧。Scheme可以作为脚本语言而内嵌于一些工具之中，如：GNU Emacs。
+</para>
+</listitem>
+</itemizedlist>
+<para>
+其他特点还有，关键字对大小写不敏感。
+</para>
+</sect4>
+
+<sect4><title>数据结构</title>
+
+<itemizedlist>
+<listitem>
+<para>
+数字
+</para>
+<para>
+下面都是合法的数字表示方法：47，1/3，2.3，4.3e14，1+3i。
+</para>
+</listitem>
+<listitem>
+<para>
+字符
+</para>
+<para>
+字符前面需要用#\做前缀。如下面都是合法字符：
+</para>
+<para>
+#\a #\A #\b #\B #\space #\newline
+</para>
+</listitem>
+<listitem>
+<para>
+字符串
+</para>
+<para>
+由双引号括起来的字符组成字符串。如："A little string"
+</para>
+</listitem>
+<listitem>
+<para>
+布尔值
+</para>
+<para>
+布尔值True和False分别用 #t 和 #f 表示。
+</para>
+</listitem>
+<listitem>
+<para>
+列表
+</para>
+<para>
+用圆括号括起来的，可以包含任何数据类型的称为列表。如： (a little (list of) (lists))
+</para>
+</listitem>
+<listitem>
+<para>
+数组（vector）
+</para>
+<para>
+用#为前缀，如： #(1 2 "string" #\x 5)
+</para>
+</listitem>
+<listitem>
+<para>
+函数（或称为过程）
+</para>
+<para>
+把函数作为一种数据类型，是Scheme语言的特色。
+</para>
+</listitem>
+<listitem>
+<para>
+符号
+</para>
+<para>
+符号除了不能够以数字开头的任何字符可组成符号。如：Symbols: this-is-a-symbol foo a32 c$23*4&amp;7+3-is-a-symbol-too!
+</para>
+</listitem>
+
+</itemizedlist>
+
+</sect4>
+
+<sect4><title>表达式和函数</title>
+
+<sect5><title>注释</title>
+<para>
+分号开始一段注释。如：
+</para>
+<screen>
+(+ 3 1) ;return 4
+</screen>
+</sect5>
+
+<sect5><title>常量表达式</title>
+<orderedlist>
+<listitem>
+<para>
+常量表达式
+</para>
+<para>
+常量表达式返回本身的值。如：
+</para>
+<screen>
+3.14	; 返回 3.14
+#t	; 返回布尔值 #t
+#\c	; 返回字符 #\c
+"Hi!"	; 返回字符串 "Hi!"
+</screen>
+</listitem>
+<listitem>
+<para>
+引用（Quotation）
+</para>
+<para>
+语法：(quote obj)  或者简写为 'obj 
+</para>
+<screen>
+(+ 2 3)  	; 返回 5
+'(+ 2 3) 	; 返回列表 (+ 2 3)
+(quote (+ 2 3)) ; 返回列表 (+ 2 3)
+</screen>
+</listitem>
+</orderedlist>
+</sect5>
+
+<sect5><title>表达式记法</title>
+<para>
+Scheme的表达式的写法有些特别，表达式用括号括起来。括号里面的第一个出线的是函数名或者操作符，其它是参数。Scheme的这种表达式写法可以叫做前置式。下面是一些Scheme的表达式的例子以及其对应的C语言的写法。
+</para>
+<screen>
+<![CDATA[
+  Scheme                               C
+------------------------------------------------------------------
+(+ 2 3 4)                       (2 + 3 + 4) 
+(< low x high)                  ((low < x) && (x < high)) 
+(+ (* 2 3)                      (* 4 5)) ((2 * 3) + (4 * 5)) 
+(f x y)                         f(x, y) 
+(define (sq x) (* x x))         int sq(int x) { return (x * x) } 
+]]>
+</screen>
+</sect5>
+
+
+<sect5><title>赋值和函数定义</title>
+
+<orderedlist>
+<listitem>
+<para>
+let 表达式和赋值
+</para>
+<para>
+语法：(let ((var val) ...) exp1 exp2 ...) 
+</para>
+<para>
+说明：let 表达式的赋值只在表达式内部有效。
+</para>
+<para>
+示例：
+</para>
+<screen>
+(let ((x 2) (y 3)) (+ x y))
+</screen>
+<para>
+; 先赋值： x=2, y=3，再计算x+y的值，结果为5。注意 (x 2) 和 (y 3) 外还有一层括号。
+</para>
+<para>
+更多的示例：
+</para>
+<screen>
+(let ((f +))
+  (f 2 3))  ; return 5 
+
+(let ((f +) (x 2))
+  (f x 3))  ; return 5 
+
+(let ((f +) (x 2) (y 3))
+  (f x y))  ; return 5 
+</screen>
+</listitem>
+
+<listitem>
+<para>
+用define 和 set! 赋值
+</para>
+<para>
+语法：(define var exp)  , (set! var exp)
+</para>
+<para>
+说明：define和 set! 表达式的赋值在全局有效。define 和 set! 的区别是define既能赋值又能定义变量，而set!只能对已经定义的变量赋值。
+</para>
+<para>
+示例：
+</para>
+<screen>
+
+(define a 1)	 
+a				; return 1
+(set! a 2)
+a				; return 2
+(let ((a 3)) a) 		; return 3
+a				; return 2
+(let ((a 3)) (set! a 4) a)	; return 4
+a				; return 2
+(let ((a 3)) (define a 5) a)	; return 5
+a				; return 2
+(set! b 1)			; 错误，b尚未定义
+
+</screen>
+<para>
+</para>
+</listitem>
+
+<listitem>
+<para>
+lambda 表达式和函数定义
+</para>
+<para>
+语法：(lambda (var ...) exp1 exp2 ...) 
+</para>
+<para>
+说明：lambda 表达式用于定义函数。var ... 是参数，exp1 exp2 ...是函数的执行 部分。通常需要结合局部定义 let 或者全局定义表达式 define，再进行函数调用。
+</para>
+<para>
+示例：
+</para>
+<screen>
+((lambda (x) (+ x x)) (* 3 4))  ; return 24
+</screen>
+<para>
+说明：先用lambda定义了函数，参数是x，函数返回x+x。同时该语句也完成了函数调用，实参是 12 (等于3*4)，因此返回值是 24 （等于12＋12）。
+</para>
+</listitem>
+<listitem>
+<para>
+在let表达式中定义函数。
+</para>
+<para>
+Scheme语言中，函数作为一种数据类型，通过赋值语句，将lambda表达式赋值给相应的函数。
+</para>
+<para>
+示例：
+</para>
+<screen>
+(let ((double (lambda (x) (+ x x))))
+  (list (double (* 3 4))
+        (double (/ 99 11))
+        (double (- 2 7))))     ; return (24 18 -10) 
+</screen>
+<para>
+说明：let表达式将lambda定义的函数赋值给double，参数是x，返回 x+x。接下来分别三次调用 double 函数，并将结果以列表形式返回。list 表达式负责生成列表。
+</para>
+</listitem>
+
+<listitem>
+<para>
+用define全局定义表达式来定义函数。
+</para>
+<para>
+用 let 定义的函数只能在 let 表达式中有效，如果想定义在整个程序中有效的函数定义，需要用到全局定义表达式——define。
+</para>
+<para>
+示例：
+</para>
+<screen>
+(define double (lambda (x) (+ x x)))
+(double 12)            ; return 24
+(double (* 3 4))       ; return 24
+</screen>
+<para>
+说明：define表达式定义了全局有效的函数 double。两次调用double的返回值都是 24。
+</para>
+</listitem>
+<listitem>
+<para>
+定义函数的简写
+</para>
+<para>
+用 define 定义的函数的语法可以简化，即将 lambda 去掉。即将语法
+</para>
+<screen>
+(define var0
+  (lambda (var1 ... varn)
+    e1 e2 ...)) 
+</screen>
+<para>
+简写为：
+</para>
+<screen>
+(define (var0 var1 ... varn)
+  e1 e2 ...) 
+</screen>
+<para>
+示例：
+</para>
+<screen>
+(define (double x) (+ x x))
+(double 12)            ; return 24
+(double (* 3 4))       ; return 24
+</screen>
+<para>
+说明：本例是前一个例子的简化版本。更简介，明了。
+</para>
+</listitem>
+</orderedlist>
+</sect5>
+
+<sect5><title>顺序计算表达式</title>
+<para>
+语法：(begin exp1 exp2 ...) 
+</para>
+<para>
+说明：顺序执行表达式 exp1, exp2, ...，返回最后一个表达式的结果
+</para>
+<para>
+示例：
+</para>
+<screen>
+(define x 3)
+(begin
+  (set! x (+ x 1))
+  (+ x x))             ; 返回结果 8
+</screen>
+<para>
+说明：begin 表达式，依次先用set!表达式为x赋值为4，在运算x+x，返回结果8。
+</para>
+</sect5>
+
+
+<sect5><title>条件表达式</title>
+
+<orderedlist>
+<listitem>
+<para>
+关系运算符
+</para>
+<screen>
+<![CDATA[
+(< -1 0)  		#t
+(> -1 0)  		#f 
+(eqv? 'a 'a) 		#t
+]]>
+</screen>
+</listitem>
+<listitem>
+<para>
+逻辑运算
+</para>
+<screen>
+(not #t)  		#f
+(not #f) 		#t 
+
+(not 1)  		#f
+(not '(a b c))  	#f 
+
+
+(or)  			#f
+(or #f)  		#f
+(or #f #t)  		#t
+(or #f 'a #f)  		a 
+
+(and)  			#t
+(and #f)  		#f
+(and #f #t)  		#f
+(and #f 'a #f)  	#f
+(and 'a #t 'b)		'b
+</screen>
+</listitem>
+<listitem>
+<para>
+if 表达式
+</para>
+<para>
+语法：(if test consequent alternative) 
+</para>
+<para>
+说明：如果test表达式为真，返回 consequent，否则返回 alternative。
+</para>
+<para>
+示例：
+</para>	
+<screen>
+<![CDATA[
+(define (abs n)
+    (if (< n 0)
+        (- 0 n)
+        n)) 
+]]>
+</screen>
+<para>
+说明：函数abs功能为取绝对值。
+</para>
+</listitem>
+<listitem>
+<para>
+cond 表达式
+</para>
+<para>
+语法：(cond (test exp) ... (else exp)) 
+</para>
+<para>
+说明：多路分支判断表达式，类似于C语言的 "if ... else if ... else"。
+</para>
+<para>
+示例：
+</para>	
+<screen>
+<![CDATA[
+(define abs
+  (lambda (n)
+    (cond
+      ((= n 0) 0)
+      ((< n 0) (- 0 n))
+      (else n)))) 
+]]>
+</screen>
+<para>
+说明：用cond表达式重新实现取绝对值函数 abs。
+</para>
+</listitem>
+<listitem>
+<para>
+case 表达式
+</para>
+<para>
+语法：(case exp0 clause1 clause2 ... ) 
+</para>
+<para>
+clause 的语法结构为：((key1 ...) exp1 ...)
+最后一个表达式的结构可以为：(else exp1 exp2 ...) 
+</para>
+<para>
+说明：类似于C语言的 "switch ... case..." 语句。
+</para>
+<para>
+示例：
+</para>	
+<screen>
+(let ((x 4) (y 5))
+  (case (+ x y)
+    ((1 3 5 7 9) 'odd)
+    ((0 2 4 6 8) 'even)
+    (else 'out-of-range)))
+; 返回 odd
+</screen>
+<para>
+说明：case 表达式先计算 x+y 的值为9，接下来在key中进行匹配，并返回对应的表达式的值 'odd。
+</para>
+</listitem>
+</orderedlist>
+</sect5>
+
+
+<sect5><title>循环</title>
+
+<orderedlist>
+<listitem>
+<para>
+do 表达式
+</para>
+<para>
+语法：(do ((var1 val1 update1) ...) (test res ...) exp ...) 
+</para>
+<para>
+说明：类似于C语言的for循环。先将val1赋值给var1，...，之后循环开始，在每次循环的开始，先执行表达式 test，如果返回布尔值真，则循环终止，并返回结果 res，如果表达式 test返回布尔值#f，则运行表达式 exp...，之后依次用 update1 ... 的值来为变量 var1 ... 重新赋值。
+</para>
+<para>
+示例1：计算阶乘 n! = n*(n-1)! 
+</para>
+<screen>
+(define factorial
+  (lambda (n)
+    (do ((i n (- i 1)) (a 1 (* a i)))
+        ((zero? i) a)))) 
+
+(factorial 10)  ; 返回 3628800 
+</screen>
+<para>
+说明：其对应的C语言实现如下
+</para>
+<screen>
+long factorial(int n)
+{
+	int  i=n;
+	long a=1;
+	
+	for (i=n;; i--)
+	{
+		if (i == 0)
+			return a;
+		a *= i;
+	}
+}
+</screen>
+<para>
+示例2：计算fibonacci数列：f(n+1)=f(n)+f(n-1) , n>0, f(1)=1, f(0)=0
+</para>
+<screen>
+(define fibonacci
+  (lambda (n)
+    (if (= n 0)
+        0
+        (do ((i n (- i 1)) (a1 1 (+ a1 a2)) (a2 0 a1))
+            ((= i 1) a1))))) 
+
+(fibonacci 6)  ; 返回 8
+</screen>
+<para>
+说明：其对应的C语言实现如下
+</para>
+<screen>
+long fibonacci(int n)
+{
+	long f=1;
+	
+	int i = n;
+	int a1= 1;
+	int a2= 0;
+	
+	if (n == 0)
+		return 0;
+	while(1)
+	{
+		if (i == 1)
+			return a1;
+		i--;
+		a1=a1+a2;
+		a2=a1;
+	}
+}
+</screen>
+</listitem>
+<listitem>
+<para>
+map 表达式
+</para>
+<para>
+语法：(map procedure list1 list2 ...) 
+</para>
+<para>
+说明：列表 list1 list2 ... 必须具有同样的长度；过程 procedure 接受的参数个数同列表的个数，各个列表中对应的变量分别作为过程 procedure 的参数被执行， 将每次的运算结果以列表形式返回。
+</para>
+<screen>
+(map abs '(1 -2 3 -4 5 -6)) 	; 返回 (1 2 3 4 5 6)，abs接受一个参数
+
+(map (lambda (x y) (* x y))
+     '(1 2 3 4)
+     '(8 7 6 5))		返回(8 14 18 20) ，lambda (x y) 接收两个参数
+</screen>
+</listitem>
+<listitem>
+<para>
+for-each 表达式
+</para>
+<para>
+语法：(for-each procedure list1 list2 ...) 
+</para>
+<para>
+说明：同 map表达式， 但是不返回结果列表。
+</para>
+</listitem>
+</orderedlist>
+
+</sect5>
+
+</sect4>
+
+</sect3>
+
+</sect2>
+
+<sect2><title>格式化</title>
+<para>
+DTD定义了SGML文档的结构。在元素的一节，我们已经介绍了元素声明的语法，元素声明即是DTD的最重要的内容。
+</para>
+<para>
+一个DTD就是用SGML语法表达的一系列语法声明。下面让我们通过一个例子，来学习DTD。
+</para>
+
+<sect3><title>DTD: 我的收藏夹</title>
+<para>
+常用的浏览器软件，都具有收藏夹的实现，如 Mozilla，IE就都有自己相应的收藏夹实现方式，但是它们之间不能相互兼容，而且不能方便的进行组织和备份。利用SGML/XML可以抽象出一个适合收藏夹的数据格式——收藏夹DTD，并用该数据格式撰写收藏夹，可以方便的实现数据提取、显示、以及转换为浏览器兼容格式。
+</para>
+<para>
+看看这个例子：
+</para>
+<screen>
+<![CDATA[
+
+]]>
+</screen>
+</sect3>
+
+</sect2>
+
+<sect2><title>公共标识符、系统标识符和目录文件</title>
+<sect3><title>公共标识符、系统标识符</title>
+<para>
+When a DTD or other external file is referenced from a document, the reference can 
+be specified in three ways: using a public identifier, a system identifier, or both. 
+</para>
+<para>
+Public Identifiers: -//OASIS//DTD DocBook V3.1//EN
+</para>
+<para>
+System Identifiers: /usr/local/sgml/docbook/3.1/docbook.dtd
+</para>
+<para>
+In XML, System Identifiers must be URIs. such as file:///usr/local/sgml/docbook/3.1/docbook.dtd.
+or "http://nwalsh.com/docbook/xml/1.3/db3xml.dtd".
+</para>
+</sect3>
+<sect3><title>目录文件：DocBook的粘合剂</title>
+<screen>
+-- Comments are delimited by pairs of double-hyphens,
+   as in SGML and XML comments. --
+OVERRIDE YES
+SGMLDECL "n:/share/sgml/docbook/3.1/docbook.dcl"
+DOCTYPE  BOOK  n:/share/sgml/docbook/3.1/docbook.dtd
+PUBLIC "-//OASIS//DTD DocBook V3.1//EN" 
+  n:/share/sgml/docbook/3.1/docbook.dtd
+SYSTEM "http://nwalsh.com/docbook/xml/1.3/db3xml.dtd"
+  n:/share/sgml/Norman_Walsh/db3xml/db3xml.dtd
+</screen>
+</sect3>
+</sect2>
+
+<sect2><title>好形、合法性——DocBook文档遵循的规范</title>
+<para>SGML/XML要遵从如下两个规则，一个是好形（well-formed）规则，一个是合法性（Valid）
+</para>
+<orderedlist>
+<listitem>
+<para>好形规范（Well-formed）
+</para>
+<itemizedlist>
+<listitem><para>所有的标记都必须要有一个相应的结束标记；</para></listitem>
+<listitem><para>所有的XML标记都必须合理嵌套；</para></listitem>
+<listitem><para>所有XML标记都区分大小写；</para></listitem>
+<listitem><para>所有标记的属性必须用""括起来；</para></listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para>合法性
+</para>
+<itemizedlist>
+<listitem>
+<para>
+符合相应的DTD规范
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</orderedlist>
+</sect2>
+
+<sect2><title>元素、实体和属性——DocBook文档的积木</title>
+<para>SGML/XML的文件主要由如下三部分构成：Elements, Attributes and Entities。
+</para>
+<orderedlist>
+<listitem>
+<para>Elements（元素）
+</para>
+<para>Describe a document's content and structure. 如：&lt;sect1&gt;
+&lt;/sect1&gt;.
+</para>
+</listitem>
+<listitem>
+<para>Attributes（元素的属性）
+</para>
+<para>
+Elements can, but don't necessarily, include one or more attributes, 
+which are additional terms that extend the function or refine the content 
+of a given element. 
+</para>
+<para>
+&lt;sect1 id="idvalue"&gt;, id 是 元素 sect1的属性。
+</para>
+</listitem>
+<listitem>
+<para>Entities（实体）
+</para>
+<para>
+In the most general terms, entities allow you to assign a name to some chunk 
+of data, and use that name to refer to that data. 
+</para>
+<para>
+general entities and parameter entities:
+</para>
+<itemizedlist>
+<listitem>
+<para>General Entities（一般实体：包括内部实体和外部实体）
+</para>
+<para>由 &amp; 和 ; 分隔的为实体。包括内部实体（定义在文件内部，引用的文本数据等）
+和外部实体（指向文件外部的文件等）。
+</para>
+<para>
+如： &lt;!ENTITY ora "O'Reilly &amp; Associates"&gt; 为内部实体。
+如： &quot;lt; 为指向 &lt; 的内部实体。
+&lt;!ENTITY ch01 SYSTEM "ch01.sgm"&gt; 为外部实体。
+再入： &lt;!ENTITY tree SYSTEM "tree.eps" NDATA EPS&gt; 为指向外部图形的实体。
+</para>
+</listitem>
+<listitem>
+<para>Parameter Entities（参数实体）
+</para>
+<para>
+只用在DTD中的实体声明。是由 % 和 ; 分隔的。在“标记块”中引用，实现标记块是被
+忽略还是包含。对于SGML，“标记块”可以出现在DTD和SGML文档中；而对于XML，只出现
+在DTD中。
+</para>
+<para>
+marked sections 中常用的关键字为 INCLUDE 和 IGNORE。
+</para>
+<para>
+Parameter entities are most frequently used to customize the DTD. 
+</para>
+<para>
+You might use a parameter entity reference in an SGML document in a marked 
+section. Marking sections is a mechanism for indicating that special 
+processing should apply to a particular block of text. Marked sections are 
+introduced by the special sequence &lt;![keyword[ and end with ]]&gt;. In SGML, 
+marked sections can appear in both DTDs and document instances. In XML, 
+they're only allowed in the DTD.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</orderedlist>
+</sect2>
+
+
+<sect2><title>Why XML?</title>
+<para>
+是SGML的一个子集，它简化了SGML的设计。既然XML就是SGML，而DocBook已经有了SGML的实现，我们有必要学习XML么？
+</para>
+
+<itemizedlist>
+<listitem>
+<para>
+XML是当今技术热点
+</para>
+</listitem>
+<listitem>
+<para>
+浏览器支持
+</para>
+<para>
+XML被设计成可以直接支持WEB应用，很多浏览器都支持XML。而SGML不被浏览器支持。
+</para>
+</listitem>
+<listitem>
+<para>
+应用程序支持
+</para>
+<para>
+支持XML的应用程序越来越多，这也是XML优越于SGML的地方。但这并不说明XML就比SGML强。
+</para>
+</listitem>
+</itemizedlist>
+
+</sect2>
+
+<sect2><title>SGML和XML的异同</title>
+<orderedlist>
+<listitem>
+<para>
+SGML和XML的异同？
+</para>
+<para>
+SGML is more customizable (thus flexible and more "powerful") at the expense of being (much) more expensive to implement. In an SGML language you could say &lt;COVER PAGES&gt;, whereas in XML this construct could not be DTD valid. 
+</para>
+</listitem>
+
+<listitem>
+<para>
+SGML DTD 到 XML DTD的转换
+</para>
+<para>
+</para>
+</listitem>
+
+<listitem>
+<para>
+SGML 文档 到 XML 文档的转换
+</para>
+<para>
+</para>
+</listitem>
+</orderedlist>
+
+</sect2>
+</sect1>
