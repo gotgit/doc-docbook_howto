@@ -11,6 +11,9 @@ XML_SRCDIR := .
 # XML_INDEX_NAME defines the main XML index page without extension.
 XML_INDEX_NAME := index
 
+# MM_SRC is FreeMind .mm filename
+MM_SRC := mindmap/docbook.mm
+
 # RENDER_DIR defines where rendered html, rtf, pdf present.
 RENDER_DIR := .
 
