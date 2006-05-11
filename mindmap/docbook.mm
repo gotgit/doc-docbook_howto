@@ -2,7 +2,7 @@
 <map version="0.8.0">
 <!-- This .mm file is CVS/SVN friendly, also has better Chinese character support. Contribute by http://www.WorldHello.net, orignal FreeMind can be found at http://freemind.sourceforge.net -->
 <node ID="Freemind_Link_1437486189" 
-	TEXT="&lt;html&gt;&lt;img src=&quot;db.png&quot;&gt;&#xa;&lt;br&gt;&#xa;&lt;center&gt;DocBook&lt;/center&gt;">
+	TEXT="DocBook">
 <node FOLDED="true" ID="Freemind_Link_1096230742" POSITION="right" 
 	TEXT="前言：我的 DocBook 之旅">
 <node FOLDED="true" ID="Freemind_Link_1631330533" 
