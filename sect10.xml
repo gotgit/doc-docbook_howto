@@ -123,7 +123,7 @@
     本文档作为公司的测试部门的测试用例汇总，是测试部门测试工作中的参考。有任何补充和更改的需要，请用 CVS 从服务器中Checkout本文档的源代码，修改完毕后，提交 CVS 服务器。测试部门的内部网站会在每小时重新编译改动过的文档。
     &lt;/para&gt;
     &lt;para&gt;
-    &amp;compname;, $Revision: 1.2 $, $Date: 2003/02/05 12:54:35 $
+    &amp;compname;, $Revision$, $Date$
     &lt;/para&gt;
   &lt;/abstract&gt;
 &lt;/articleinfo&gt;
@@ -318,7 +318,7 @@
     项目日志和项目计划，为项目组同志提供参考。
     &lt;/para&gt;
     &lt;para&gt;
-    &amp;yourname;, $Revision: 1.2 $, $Date: 2003/02/05 12:54:35 $
+    &amp;yourname;, $Revision$, $Date$
     &lt;/para&gt;
   &lt;/abstract&gt;
 &lt;/articleinfo&gt;
@@ -614,7 +614,7 @@
     记录当前版本号（build number）下，添加的新功能和修改的BUG。
     &lt;/para&gt;
     &lt;para&gt;
-    &amp;yourname;, $Revision: 1.2 $, $Date: 2003/02/05 12:54:35 $
+    &amp;yourname;, $Revision$, $Date$
     &lt;/para&gt;
   &lt;/abstract&gt;
 &lt;/articleinfo&gt;

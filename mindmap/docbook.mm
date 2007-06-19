@@ -3559,7 +3559,7 @@
 <node ID="Freemind_Link_1156307906" 
 	TEXT="  &lt;config param=&quot;desc&quot; value=&quot;The Test Home Page&quot;/&gt; "/>
 <node ID="Freemind_Link_1452190104" 
-	TEXT=" &lt;config param=&quot;rcsdate&quot; value=&quot;$Date: 2006/04/05 07:41:26 $&quot;/&gt;&#xa;">
+	TEXT=" &lt;config param=&quot;rcsdate&quot; value=&quot;$Date$&quot;/&gt;&#xa;">
 <arrowlink DESTINATION="Freemind_Link_1597425907" ENDARROW="Default" ENDINCLINATION="532;0;" ID="Freemind_Arrow_Link_162221383" STARTARROW="None" STARTINCLINATION="532;0;"/>
 </node>
 <node FOLDED="true" ID="Freemind_Link_445700873" 
@@ -4801,7 +4801,7 @@
 <node FOLDED="true" ID="Freemind_Link_1832159679" 
 	TEXT="config">
 <node ID="Freemind_Link_103546710" 
-	TEXT="&lt;config param=&quot;rcsdate&quot; value=&quot;$Date: 2006/04/05 07:41:26 $&quot;/&gt;&#xa;&lt;config param=&quot;navbgcolor&quot; value=&quot;#4080FF&quot;/&gt;&#xa;&lt;config param=&quot;footer&quot; value=&quot;http://www.worldhello.net&quot; altval=&quot;FT:WorldHello&quot;/&gt;&#xa;&lt;config param=&quot;footlink&quot; value=&quot;about&quot; altval=&quot;FL:关于&quot;/&gt;&#xa;&lt;config param=&quot;feedback.href&quot; value=&quot;webmaster@mysite.com&quot;/&gt;"/>
+	TEXT="&lt;config param=&quot;rcsdate&quot; value=&quot;$Date$&quot;/&gt;&#xa;&lt;config param=&quot;navbgcolor&quot; value=&quot;#4080FF&quot;/&gt;&#xa;&lt;config param=&quot;footer&quot; value=&quot;http://www.worldhello.net&quot; altval=&quot;FT:WorldHello&quot;/&gt;&#xa;&lt;config param=&quot;footlink&quot; value=&quot;about&quot; altval=&quot;FL:关于&quot;/&gt;&#xa;&lt;config param=&quot;feedback.href&quot; value=&quot;webmaster@mysite.com&quot;/&gt;"/>
 </node>
 <node FOLDED="true" ID="Freemind_Link_304998867" 
 	TEXT="head">
@@ -5142,7 +5142,7 @@
 <node FOLDED="true" ID="Freemind_Link_1797864787" 
 	TEXT="rcsdate： 底部脚注左侧显示版本日期">
 <node ID="Freemind_Link_808775354" 
-	TEXT="&lt;config param=&quot;rcsdate&quot; value=&quot;$Date: 2006/04/05 07:41:26 $&quot;/&gt;"/>
+	TEXT="&lt;config param=&quot;rcsdate&quot; value=&quot;$Date$&quot;/&gt;"/>
 </node>
 <node FOLDED="true" ID="Freemind_Link_244447838" 
 	TEXT="text-prefix">
