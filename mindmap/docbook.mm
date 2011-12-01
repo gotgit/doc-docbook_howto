@@ -6215,7 +6215,7 @@
 	TEXT="作者">
 <node FOLDED="true" ID="Freemind_Link_290269648" 
 	TEXT="J">
-<node ID="Freemind_Link_1469124843" LINK="http://whodo.worldhello.net/wiki/User:Jiangxin" 
+<node ID="Freemind_Link_1469124843" LINK="http://www.worldhello.net/about"
 	TEXT="Jiang Xin"/>
 </node>
 </node>
